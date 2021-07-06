@@ -1,9 +1,9 @@
 
 # Cybersecurity
 
-1.  [Repository overview](Start.html)
-2.  [Solid base and terminology](#Chapter1)
-3.  [Malware](#Chapter2)
+1.  [Repository overview](Start.md)
+2.  [Solid base and terminology](#solid-base-and-terminology)
+3.  [Malware](#malware)
 
 ## Solid base and terminology
 ---

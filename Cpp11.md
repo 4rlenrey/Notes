@@ -259,5 +259,44 @@ The output for this program would be:
 ```
 ## Chapter 4 Variables and Objects
 ---
+Like in any other language you can declare the existence of variables. You can do that just like that:
+```cpp
+std::string s; 
+```
+Yes! It's that easy. We've declared a string type of variable named `s` and now we can store some data in it.
+
+```cpp
+std::string s = "We're declaring string var and giving this text as it's value";
+``` 
+
+### Data types
+C++ gives us some datatypes by default. These are some that I use:
+(Size is in bytes)
+
+| Type | What does it store | Size |
+| --- | --- | --- |
+| int | number in range from -2,147,483,648 to 2,147,483,647  | 4 |
+| char | characters with ASCII number values from 0 to 255  | 1 |
+| double | floating point numbers  | 4 |
+| float | Same as in double; It's just bigger | 8 | 
+
+You can upgrade your variables by using these keywords right before specyfying type  (mostly for better memory managment):
+
+| Keyword | What does it do |
+| --- | --- | 
+| `signed` | It lets this boi use some negative numbers |
+| `unsigned` | It makes your boi use only positive numbers |
+| `long` | bigger variable more numbers to use |
+| `long long` | bigger variable more numbers to use |
+| `short` | smaller variable less numbers to use |
+
+Using this magic looks like this:
+
+```cpp
+short int v = 10;
+```
+
+Like I said, C++ is simple.
+
 
 Copyright © 2021 4rlenrey. All Rights Reserved

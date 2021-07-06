@@ -10,51 +10,23 @@
 
 Cybersecurity is trying to acheve all of above goals for data and services:
 
-* Avaliability
-    
-    _You should be able to use your bank account_
-    
-* Integrity
-    
-    _Your bully should not be able to change your name_
-    
-* Accountability
-    
-    _Your bully should not be able to take credit for your work_
-    
-* Confidentialiy
-    
-    _Your friends should not be able to see your divorce papers_
-    
-* Authenticity
-    
-    _You should be able to get the real amount of money stored in your PayPal_
+* Avaliability - _You should be able to use your bank account_
+* Integrity - _Your bully should not be able to change your name_
+* Accountability - _Your bully should not be able to take credit for your work_
+* Confidentialiy - _Your friends should not be able to see your divorce papers_
+* Authenticity - _You should be able to get the real amount of money stored in your PayPal_
     
 
 There are two base types of attacks.
 
-* Passive attack
-    
-    _Attacker just gets some information without harming system resources_
-    
-    \- Really hard to detect
-    
-* Active attack
-    
-    _Attcker does something to the system resources_
-    
-    \- Easier to detect
+* Passive attack _Attacker just gets some information without harming system resources (Really hard to detect)_ 
+* Active attack _Attcker does something to the system resources (Easier to detect)_
     
 
 There's another way of separating attacks into two categories;
 
-* Internal attack
-    
-    _Attacker is a imposter_
-    
-* External attack
-    
-    _Attcker is not from the company/system_
+* Internal attack _Attacker is an imposter_
+* External attack _Attcker is not from the company/system_
     
 
 ### Terminology

@@ -25,3 +25,5 @@ em{
     color: white;
     padding: 2px;
 }
+tr th{padding: 3px;}
+tr td{padding: 3px;}

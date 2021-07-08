@@ -1,20 +1,33 @@
 # C++11 Notes
 
-1.  [Repository overview](README.md)
-2.  [CheetSheets](#chapter-1-cheetsheets)
-3.  [Basics](#chapter-2-basics)
-4.  [Statements and flow control](#chapter-3-statements-and-flow-control)
-5.  [Variables and Objects](#chapter-4-variables-and-objects)
+<!-- TOC -->
+
+- [C++11 Notes](#c11-notes)
+    - [Chapter 1 CheetSheets](#chapter-1-cheetsheets)
+        - [Arithmetic Operators](#arithmetic-operators)
+        - [Comparative Operators](#comparative-operators)
+        - [Assignment Operators](#assignment-operators)
+        - [Logical Operators](#logical-operators)
+    - [Chapter 2 Basics](#chapter-2-basics)
+        - [Getting started](#getting-started)
+        - [Comments](#comments)
+    - [Chapter 3 Statements and flow control](#chapter-3-statements-and-flow-control)
+        - [Conditional statements](#conditional-statements)
+        - [Loops](#loops)
+    - [Chapter 4 Variables and Objects](#chapter-4-variables-and-objects)
+        - [Data types](#data-types)
+
+<!-- /TOC -->
 
 ## Chapter 1 CheetSheets
 ---
 
-### Arythmetic Operators
+### Arithmetic Operators
 
 | Operator | Definition                         | Example | Outcome |
-|----------|------------------------------------|---------|---------|
+| -------- | ---------------------------------- | ------- | ------- |
 | x + y    | addition                           | 3 + 5   | 8       |
-| x - y    | substraction                       | 3 - 5   | -2      |
+| x - y    | subtraction                       | 3 - 5   | -2      |
 | x / y    | division                           | 4 / 2   | 2       |
 | x * y    | multiplication                     | 3 * 5   | 15      |
 | x % y    | modulo                             | 5 % 3   | 2       |
@@ -30,7 +43,7 @@
 ### Comparative Operators
 
 | Operator | Definition           | Example | Outcome |
-|----------|----------------------|---------|---------|
+| -------- | -------------------- | ------- | ------- |
 | x == y   | x equal y            | 3 == 5  | false   |
 | x != y   | x not equal y        | 3 != 5  | true    |
 | x < y    | x less than y        | 3 < 5   | true    |
@@ -41,7 +54,7 @@
 ### Assignment Operators
 
 | Operator | Definition             |
-|----------|------------------------|
+| -------- | ---------------------- |
 | x = y    | x now has a value of y |
 | x += y   | x = x + y              |
 | x -= y   | x = x - y              |
@@ -57,7 +70,7 @@
 ### Logical Operators
 
 | Operator | Definition |
-|----------|------------|
+| -------- | ---------- |
 | !        | not        |
 | \|       | or         |
 | &&       | and        |
@@ -73,7 +86,7 @@ To be able to use/run your basic C++ code you have to go through some steps;
 
 ### Comments
 
-Comments can not be seen by the compiler. They're really usefull for programmers tho.
+Comments can not be seen by the compiler. They're really useful for programmers tho.
 
 ```cpp
 // this is a single line comment
@@ -93,7 +106,7 @@ Here is a basic example of a one of the simplest c++ programs:
 ```cpp    
 int main() //main function
 {
-	int x = 2+1; //asigning a value to a variable named x
+	int x = 2+1; //assigning a value to a variable named x
 	return 0; //returning an exit code (0 is success, everything else indicates an error)
 }
 ```
@@ -116,17 +129,17 @@ The output for this simple program would be:
 ```
 You can also input some data from a user. Let's make a program that takes a number and then prints a bigger one.
 
-    
-    #include <iostream>
-    int main() 
-    {
-    	int x; //declaration without specyfing value
-    	std::cin >> x; //getting the value of x from the standard input 
-    	x += 2; //adding 2 to the value
-    	std::cout << x; 
-    	return 0; 
-    }
-    
+```cpp    
+#include <iostream>
+int main() 
+{
+	int x; //declaration without specyfing value
+	std::cin >> x; //getting the value of x from the standard input 
+	x += 2; //adding 2 to the value
+	std::cout << x; 
+	return 0; 
+}
+```
 
 For input like this:
 ```sh
@@ -171,14 +184,14 @@ switch(some-variable)
     do_stuff_if_didnt_meet_any_cases;
     	break;
 } 
-//it's similar to a lot of else if's but more redable
+//it's similar to a lot of else if's but more readable
     
     
 //ternary operator
 some_variable = (condition) ? value_if_true : value_if_false;
 ```
 
-### C++ provide 4 types of loops
+### Loops
 
 ```cpp    
 //for loop
@@ -217,7 +230,7 @@ A1: Basically there is a possibility that the instructions in a while loop won't
 
 Q2: What is going on with this range-based loop
 
-A1: It's really simple. When you have a container and you want to be able to access every single element of it then you can easly do that by using this type of loop. (And using it also makes code more readable)
+A1: It's really simple. When you have a container and you want to be able to access every single element of it then you can easily do that by using this type of loop. (And using it also makes code more readable)
 
 Let's check how would these loops be used in practice:
 
@@ -273,22 +286,22 @@ std::string s = "We're declaring string var and giving this text as it's value";
 C++ gives us some datatypes by default. These are some that I use:
 (Size is in bytes)
 
-| Type | What does it store | Size |
-| --- | --- | --- |
-| int | number in range from -2,147,483,648 to 2,147,483,647  | 4 |
-| char | characters with ASCII number values from 0 to 255  | 1 |
-| double | floating point numbers  | 4 |
-| float | Same as in double; It's just bigger | 8 | 
+| Type   | What does it store                                   | Size |
+| ------ | ---------------------------------------------------- | ---- |
+| int    | number in range from -2,147,483,648 to 2,147,483,647 | 4    |
+| char   | characters with ASCII number values from 0 to 255    | 1    |
+| double | floating point numbers                               | 4    |
+| float  | Same as in double; It's just bigger                  | 8    |
 
-You can upgrade your variables by using these keywords right before specyfying type  (mostly for better memory managment):
+You can upgrade your variables by using these keywords right before specyfing type  (mostly for better memory management):
 
-| Keyword | What does it do |
-| --- | --- | 
-| `signed` | It lets this boi use some negative numbers |
-| `unsigned` | It makes your boi use only positive numbers |
-| `long` | bigger variable more numbers to use |
-| `long long` | bigger variable more numbers to use |
-| `short` | smaller variable less numbers to use |
+| Keyword       | What does it do                             |
+| ------------- | ------------------------------------------- |
+| **signed**    | It lets this boi use some negative numbers  |
+| **unsigned**  | It makes your boi use only positive numbers |
+| **long**      | bigger variable more numbers to use         |
+| **long long** | bigger variable more numbers to use         |
+| **short**     | smaller variable less numbers to use        |
 
 Using this magic looks like this:
 
@@ -296,7 +309,99 @@ Using this magic looks like this:
 short int v = 10;
 ```
 
+You might be asking yourself a question.
+What if I wanted to use 5 numbers?
+Would declaring them look like this?:
+```cpp
+int number1 = 1;
+int number2 = 7;
+int number3 = 3;
+int number4 = 4;
+int number5 = 2;
+```
+NO! You can create an array;
+```cpp
+int numbers[5] = {0}; //declaration type name[size];
+//Added this = {0} thing to make it have all zeros
+
+//remember that arrays start with 0
+//so here you can do:
+numbers[0] = 1;
+numbers[1] = 7;
+numbers[2] = 3;
+numbers[3] = 4;
+numbers[4] = 2;
+```
+This is a 1-dimensional array. It looks like this:
+```sh
+[1][7][3][4][2]
+```
+Arrays can be n-dimensional
+It you wanted to have something like this:
+```sh
+[0][0][0][0][0]
+[0][0][0][0][0]
+[0][0][0][0][0]
+[0][0][0][0][0]
+[1][0][0][0][0]
+```
+You would want to do this:
+```cpp
+int a[5][5];
+
+//syntax for when you want to access elements from the array;
+a[4][0] = 1;
+```
+You can assign numbers while declaring to an array like this:
+```cpp
+int x[4] = {1, 2, 4, 0};
+```
+It'll look like:
+```
+[1][2][4][0]
+```
+And 2 dimensional
+```cpp
+int a[2][3] = {{5, 2, 3}, {4, 2, 8}};
+```
+Would look like:
+```sh
+[5][2][3]
+[4][2][8]
+```
+This simple program
+```cpp
+#include <iostream>
+int main()
+{
+    int a[2][3] = {{5, 2, 3}, {4, 2, 8}};
+    std::cout << a[0][2];
+    return 0;
+}
+```
+Would print out this
+```sh
+3
+```
+Sadly, one of the problems related to arrays is that you can't really add any new elements after declaration.
+That can be solved by using STL containers.
+Using/declaring them looks like this:
+
+```cpp
+#include<vector>
+#include<string>
+
+int main()
+{
+    std::string x = "Container for text strings";
+    std::vector<int> v = {3,5,1};
+    return 0;
+}
+```
+
+To use a container you usually need to `#include` it.
+STL provides different types of containers. 
+
+
 Like I said, C++ is simple.
 
-
-Copyright © 2021 4rlenrey. All Rights Reserved

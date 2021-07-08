@@ -69,4 +69,43 @@ There's another way of separating attacks into two categories;
 
 Symmetric encryption basically looks like this.
 
-1. Plaintext goes through 
+1. Plaintext goes through a encryption algorithm that uses a secret key to encrypt it resulting in creation of ciphertext.
+2. You can pass this ciphertext to your friend who has a copy of this secret key and knows what type of algorithm you used.
+3. He decrypts it by using this key and decryption algorithm.
+
+Example:
+
+> Data
+- Message - 'I need money'
+- Key - '32345112324324324'
+- Encryption algorithm - Add to char values the ones from a key. 
+- Decryption algorithm - Subtract from char values the ones from a key. 
+> Steps
+1. `I need money` -> Encryption algorithm + Key -> `L"qije!orpi|`
+    - `I` -> 73 + 3 -> `L`
+    - `n` -> 110 + 2 -> `q`
+    - `e` -> 101 + 3 -> `i`
+    - `e` -> 101 + 4 -> `j`
+    
+2. You give this `L"qije!orpi|` ciphertext to your friend
+
+3. `L"qije!orpi|` -> Decryption algorithm + Key -> `I need money`
+
+C++ implementation of this simple encrypting algorithm:
+```cpp
+string key = "32345112324324324";
+string msg = "I need money";
+int index = 0;
+for(auto &x : msg)
+{
+    x += (int)(key[index] - '0'); //+= for encrypting -= for decrypting
+    index++;
+}
+cout << msg << "\n";
+```
+
+As you can see, It'd be impossible to decrypt that without knowing the key.
+But there are some problems related to this type of security.
+
+1. The key must have the same or bigger length as plaintext. 
+2. You need to somehow give the key to your friend without making the possibility for anyone else to see it. 

@@ -3,26 +3,28 @@
 <!-- TOC -->
 
 - [C++11 Notes](#c11-notes)
-    - [Chapter 1 CheetSheets](#chapter-1-cheetsheets)
-        - [Arithmetic Operators](#arithmetic-operators)
-        - [Comparative Operators](#comparative-operators)
-        - [Assignment Operators](#assignment-operators)
-        - [Logical Operators](#logical-operators)
-    - [Chapter 2 Basics](#chapter-2-basics)
+    - [Operators](#operators)
+        - [Arithmetic](#arithmetic)
+        - [Comparative](#comparative)
+        - [Assignment](#assignment)
+        - [Logical](#logical)
+    - [Basics](#basics)
         - [Getting started](#getting-started)
         - [Comments](#comments)
-    - [Chapter 3 Statements and flow control](#chapter-3-statements-and-flow-control)
+    - [Statements and flow control](#statements-and-flow-control)
         - [Conditional statements](#conditional-statements)
         - [Loops](#loops)
-    - [Chapter 4 Variables and Objects](#chapter-4-variables-and-objects)
+    - [Variables](#variables)
         - [Data types](#data-types)
+    - [STL containers](#stl-containers)
+        - [Vector](#vector)
 
 <!-- /TOC -->
 
-## Chapter 1 CheetSheets
+## Operators
 ---
 
-### Arithmetic Operators
+### Arithmetic
 
 | Operator | Definition                         | Example | Outcome |
 | -------- | ---------------------------------- | ------- | ------- |
@@ -40,7 +42,7 @@
 | x << y   | bitwise left shift (x * pow(2, y)) | 5 << 3  | 40      |
 | x >> y   | bitwise right shift                | 5 >> 3  | 0       |
 
-### Comparative Operators
+### Comparative
 
 | Operator | Definition           | Example | Outcome |
 | -------- | -------------------- | ------- | ------- |
@@ -51,7 +53,7 @@
 | x <= y   | x less or equal to y | 3 <= 5  | true    |
 | x >= y   | x more or equal to y | 3 >= 5  | false   |
 
-### Assignment Operators
+### Assignment
 
 | Operator | Definition             |
 | -------- | ---------------------- |
@@ -67,14 +69,14 @@
 | x >>= y  | x = x >> y             |
 | x %= y   | x = x % y              |
 
-### Logical Operators
+### Logical
 
 | Operator | Definition |
 | -------- | ---------- |
 | !        | not        |
 | \|       | or         |
 | &&       | and        |
-## Chapter 2 Basics
+## Basics
 ---
 ### Getting started
 
@@ -149,7 +151,7 @@ The output would be:
 ```sh
 5
 ```
-## Chapter 3 Statements and flow control
+## Statements and flow control
 ---
 
 ### Conditional statements
@@ -270,7 +272,7 @@ The output for this program would be:
 0 1 
 -5 -4 -3 -2 -1 
 ```
-## Chapter 4 Variables and Objects
+## Variables
 ---
 Like in any other language you can declare the existence of variables. You can do that just like that:
 ```cpp
@@ -383,7 +385,10 @@ Would print out this
 ```sh
 3
 ```
+## STL containers
+
 Sadly, one of the problems related to arrays is that you can't really add any new elements after declaration.
+
 That can be solved by using STL containers.
 Using/declaring them looks like this:
 
@@ -401,6 +406,12 @@ int main()
 
 To use a container you usually need to `#include` it.
 STL provides different types of containers. 
+The ones that I mostly use are:
+
+### Vector
+
+Vector is an amazing container.
+
 
 
 Like I said, C++ is simple.

@@ -4,6 +4,7 @@
 2. [Read before using](#read-before-using)
 3. [What is this thing?](#what-is-this-thing)
 4. [How to reach the creator?](#how-to-reach-the-creator)
+5. [Recommended books](#recommended-books)
 
 ## List of available notes
 ---
@@ -26,3 +27,9 @@ This is a digital version of my notes. I've made them based on a bit of books, a
 
 The simplest and easiest way of contacting me is by my contact email 4rlenrey@gmail.com
 
+## Recommended books
+--- 
+For now I can only recommend a few books that I've read, those being:
+- "C++ Beginner's guide" ~ Alex Allain
+- "The C++ Programming Language, 4th Edition" ~ Bjarne Stroustrup
+- "Computer Security: Principles and Practice (4th Edition)" ~ William Stallings and Lawrie Brown

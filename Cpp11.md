@@ -8,6 +8,7 @@
         - [Comparative](#comparative)
         - [Assignment](#assignment)
         - [Logical](#logical)
+        - [Access](#access)
     - [Basics](#basics)
         - [Getting started](#getting-started)
         - [Comments](#comments)
@@ -16,8 +17,17 @@
         - [Loops](#loops)
     - [Variables](#variables)
         - [Data types](#data-types)
+    - [Functions](#functions)
+        - [Syntax](#syntax)
+        - [Declaration](#declaration)
     - [STL containers](#stl-containers)
         - [Vector](#vector)
+        - [Stack](#stack)
+        - [List](#list)
+        - [Queue](#queue)
+        - [Priority_Queue](#priority_queue)
+        - [Map](#map)
+        - [Set](#set)
 
 <!-- /TOC -->
 
@@ -76,6 +86,16 @@
 | !        | not        |
 | \|       | or         |
 | &&       | and        |
+
+### Access
+
+| Operator | Definition | Example | Description |
+| --- | --- | --- | --- |
+| * | Pointer dereference | *x | Boi, give me the object from this pointer |
+| [ ] | Array subscript | x[y] | Boi, give me the object from y index from array |
+| & | Address of/reference to | &x | create a pointer that refers to the object x |
+| . | Member | x.y | Use a member y of object x |
+| -> | Member pointer | x->y | Use a member y of object x through a pointer |
 ## Basics
 ---
 ### Getting started
@@ -385,6 +405,122 @@ Would print out this
 ```sh
 3
 ```
+## Functions
+
+When you don't want to put everything in `main` function or you want to make some parts of your code reusable you create your own functions.
+
+Let's consider this example 
+```cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    int x[100] = {0};
+
+    //do some stuff with the array
+
+    //print out the array
+    cout << "/n";
+    for(int i = 0; i < 100; i++)
+    {
+        cout << "/t" << x[i];
+    }
+    cout << "/n";
+
+
+    //do another stuff with the array
+
+    //print out the array again
+    cout << "/n";
+    for(int i = 0; i < 100; i++)
+    {
+        cout << "/t" << x[i];
+    }
+    cout << "/n";
+
+    return 0;
+}
+```
+I feel like you can see where I'm going with this
+
+Let's wrap this printing thing into a function
+```cpp
+#include <iostream>
+using namespace std;
+
+void print_array(const int &arr[])
+{
+    cout << "/n";
+    for(int i = 0; i < 100; i++)
+    {
+        cout << "/t" << x[i];
+    }
+    cout << "/n";
+}
+
+int main()
+{
+    int x[100] = {0};
+
+    //do some stuff with the array
+
+    print_array(x);
+
+    //do another stuff with the array
+
+    print_array(x);
+
+    return 0;
+}
+```
+Looks a bit cleaner huh?
+
+### Syntax
+
+```cpp
+return_type name(type_of_first_arg name_of_first_arg)
+{
+    
+}
+```
+
+Here is a example of a simple function
+```cpp
+int add(int x, int y)
+{
+    return x+y;
+}
+//usage
+w = add(5, 6); //w should be equal to 11
+```
+### Declaration
+You can also declare the existence of a function first and write it later.
+Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+void print_array(const int &arr[]); //declaration 
+
+int main()
+{
+    int x[100] = {0};
+    print_array(x);
+
+    return 0;
+}
+
+void print_array(const int &arr[]) //writing what it should do
+{
+    cout << "/n";
+    for(int i = 0; i < 100; i++)
+    {
+        cout << "/t" << x[i];
+    }
+    cout << "/n";
+}
+```
+You always need to declare that the function exist before using it
 ## STL containers
 
 Sadly, one of the problems related to arrays is that you can't really add any new elements after declaration.
@@ -410,9 +546,137 @@ The ones that I mostly use are:
 
 ### Vector
 
-Vector is an amazing container.
+Vector is an amazing container. It's like an array that can change size.
+You can declare it in a few different ways.
+```cpp
+std::vector<type-stored> name(size);
+std::vector<type-stored> name;
 
+//example
+std::vector<int> vec(10);
+```
+And you can access its elements in a few different ways
+```cpp
+name[index] = 0;
+name.at(index) = 0;
+name.front() = 0;
+name.back() = 0;
+```
+You can do stuff like adding and deleting elements
+```cpp
+name.push_back(new_element); //adding new element
+name.pop_back(); //deleting last element
+name.erase(first_i, last_i); //erase elements from first to the last index specified
+name.clear(); //removes all the elements
+```
+It has some methods for iterators like `begin()` and `end()`.
 
+### Stack
+STL stack is exactly like this algorithmical stack.
+
+LIFO - Last in first out
+
+```cpp
+std::stack<type-stored> name;
+
+//example
+std::stack<int> s;
+```
+It has some basic methods
+```cpp
+name.push(element); //adds new element on top of a stack
+name.pop(); //deletes the top element
+name.top(); //returns the top element
+name.empty(); //check if it's empty and returns true/false
+```
+
+### List
+
+STL list is a implemented version of a linked list data structure.
+Instead of storing it's elements in a array way each node contains a direct link to another node. That means that you can not use normal indexes like in array. It has some benefits tho like reduced complexity of deleting a front element.
+Eg. Let's consider consider a vector that contains 100000 elements. Deleting the first element would result in changing indexes of 99999 elements. Imagine if you had to delete/add elements in front of this vector quickly. It'd be impossible.
+
+In array it looks like this:
+```sh
+[0][1][2][3][4]
+```
+in linked list it looks like
+```sh
+[start]->[]->[]->[]->[]->[end]
+```
+
+Ok, lets stop doing theory :)
+```cpp
+std::list<type-stored> name;
+
+//example
+std::list<int> s;
+```
+It has some basic methods
+```cpp
+name.push_front(element); //adds new element in front of the list
+name.push_back(element); //adds new element at the back of the list
+name.pop_front(); //deletes the front element
+name.pop_back(); //deletes the back element
+name.front(); //access the front element
+name.back(); //access the back element
+name.sort(); //sorts the list
+name.size(); //returns size of the list
+name.remove(); //removes elements with a specific value
+name.empty(); //check if it's empty and returns true/false
+```
+### Queue
+
+FIFO - first in first out
+
+```cpp
+std::queue<type-stored> name;
+
+//example
+std::queue<int> q;
+```
+It also has some basic methods
+```cpp
+name.push(element); //adds new element
+name.pop(); //deletes next element
+name.front(); //returns the front element
+name.size(); //returns size
+name.empty(); //check if it's empty and returns true/false
+```
+
+### Priority_Queue
+
+Priority queue is used when you need to have a container with quick access to the greatest of the elements. The greatest element is always on top.
+
+```cpp
+std::priority_queue<type-stored> name;
+
+//example
+std::priority_queue<int> pq;
+```
+It also has some basic methods
+```cpp
+name.push(element); //adds new element 
+name.pop(); //deletes top element
+name.front(); //returns top element
+name.size(); //returns size
+name.empty(); //check if it's empty and returns true/false
+```
+
+### Map
+
+```cpp
+std::map<std::string, int> m { {"One_key", 0}, {"YEP_DASSQOOL", 0}, };
+
+m["One_key"] = 22;  // update an existing value
+m["Some_Text"] = 0;  // insert a new value
+```
+Do I have to even say anything else?
+This is just so cool. It's like an array, but you can use custom keys instead of boring indexes.
+
+### Set
+
+Sets are similar to priority_queues, because you can specify the order you want your content to be stored in.
+It's useful when you need a container that can provide a easy and fast way of checking if a specific value exists.
 
 Like I said, C++ is simple.
-

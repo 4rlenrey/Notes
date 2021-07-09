@@ -73,6 +73,8 @@ Symmetric encryption basically looks like this.
 2. You can pass this ciphertext to your friend who has a copy of this secret key and knows what type of algorithm you used.
 3. He decrypts it by using this key and decryption algorithm.
 
+![Diagram](Assets/Crypto1.png)
+
 Example:
 
 > Data

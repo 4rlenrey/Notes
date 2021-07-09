@@ -8,6 +8,11 @@
         - [Terminology](#terminology)
     - [Cryptography](#cryptography)
         - [Symmetric encryption](#symmetric-encryption)
+            - [One-time pad cryptography](#one-time-pad-cryptography)
+            - [Cryptoanalysis](#cryptoanalysis)
+            - [Bruteforce](#bruteforce)
+            - [Frequency analysis](#frequency-analysis)
+            - [Block cipher](#block-cipher)
 
 <!-- /TOC -->
 
@@ -67,11 +72,13 @@ There's another way of separating attacks into two categories;
 
 ### Symmetric encryption
 
-Symmetric encryption basically looks like this.
+In this type of encryption you only have one key. It's used both for encryption and decryption
+
+It basically looks like this.
 
 1. Plaintext goes through a encryption algorithm that uses a secret key to encrypt it resulting in creation of ciphertext.
 2. You can pass this ciphertext to your friend who has a copy of this secret key and knows what type of algorithm you used.
-3. He decrypts it by using this key and decryption algorithm.
+3. He decrypts it by using this key and decryption algorithm (Typically reversed encryption algorithm).
 
 ![Diagram](Assets/Crypto1.png)
 
@@ -106,8 +113,92 @@ for(auto &x : msg)
 cout << msg << "\n";
 ```
 
-As you can see, It'd be impossible to decrypt that without knowing the key.
-But there are some problems related to this type of security.
+There are some problems related to this type of security.
 
-1. The key must have the same or bigger length as plaintext. 
+1. You need to use a strong encryption algorithm. 
 2. You need to somehow give the key to your friend without making the possibility for anyone else to see it. 
+3. You need to store the key safely.
+
+#### One-time pad cryptography
+
+The main idea behind it is to for every bit of plaintext have a bit of key.
+
+This is the most safe type of cryptography!
+But sadly it does have some flaws.
+
+- If you wanted to encrypt your 1tb of data then you'd need 1tb key. _Imagine having to double your storage just to be able to store your key._
+
+- You need to somehow safely send and store the key.
+
+- Even if you manage to store your key securely
+
+#### Cryptoanalysis
+
+You can perform cryptoanalysis knowing 
+- Only ciphertext 
+- Some plaintext
+- Parts of the key
+- Key
+- Parts of the algorithm
+
+One of parts of Cryptoanalysis is   
+
+#### Bruteforce
+
+Let's consider this situation:
+We know how the algorithm work. We just do not know the key.
+You can write a script that can generate all kinds of keys and tries to decrypt ciphertext while using them. 
+
+#### Frequency analysis
+
+This type of analysis can be applied to old encryption algorithms, where each letter has it's corresponding letter. For example ROT 13 cipher.
+In this cipher you should add `13` to all char values of the letters. _If any goes out of range, then you should add the leftover to the first char value._ 
+
+This is how it works.
+
+Let's consider this text as a simple ciphertext:
+
+<!-- cSpell:disable -->
+```txt
+Ny xyd eco sd sp iye gkxd dy qod qyyn li boknsxq sd! S kw zboddi cebo drkd cusvv mywoc wycdvi gsdr zbkmdsmo. Drsc xydo wkusxq zbymocc gkc wi gki yp zbkmdsmo :). Drsc sc xyd k zvkmo grobo loqsxxob mynobc vokbx sd'c tecd k myvvomdsyx yp wi xydoc. S'w xyd k zbypoccsyxkv gbsdob xyb k dokmrob xyb xkdsfo oxqvscr czokuob, cy cy sd wsqrd myxdksx cywo pkvco sxpybwkdsyx, lkn mynsxq zbkmdsmo kxn oxqvscr qbkwwkb scceoc. Drsc sc k nsqsdkv fobcsyx yp wi xydoc. S'fo wkno drow lkcon yx k lsd yp lyyuc, kbdsmvoc kxn fsnoyc. Ofobi csxqvo gybn sx robo sc gbsddox li wo. S econ RDWV kxn cywo MCC dy wkuo sd cyworyg boknklvo. (S'w xyd k qbkzrsm nocsqxob xyb k pbyxd oxn nofovyzob cy zvokco nyx'd tenqo wo). S'w nysxq sd dy lo klvo dy rkfo k cyvsn myzi yp wi vokbxsxq wsxncod pyb grox S'w xyd qyxxk lo klvo dy bowowlob cywodrsxq pbyw robo. (Kvcy S rkn cywo sxdobxod scceoc kxn rkn kmmocc yxvi dy cywo zbyqbkwwsxq lyyuc kxn qyd k lsd lybon) Pyb xyg iye mkx'd bokvvi myxdbsledo dy drsc led sp iye gkxd dy zysxd yed cywo wscczovvsxq/qbkwwkb scceoc poov pboo dy myxdkmd wo.
+```
+<!-- cSpell:enable -->
+This is a simple table of three letter frequency (Not all the letters bc I'm lazy):
+
+| Letter    | Frequency |
+| --------- | --------- |
+| E | 12.60 % |
+| T | 9.37 % |
+| A | 8.34 % |
+
+And this is the frequency for letters in this ciphertext (Didnt include all bc it'd be really long):
+
+| Letter | Frequency|
+| --- | ------ |
+| O | 8% |
+| Y | 7% |
+| D | 6% |
+
+We can now try to mach those. (Of course the longer ciphertext is the more accurate it would be). Remember that sometimes you might need to mix up a bit (Like switch two letters) because not all sentences are 100% accurate with english frequency
+
+#### Block cipher
+
+It encrypts plaintext in blocks with constant size. It produces ciphertext blocks with the same size as plaintext blocks
+
+DES might be the most tested block algorithm ever, because a lot of people wanted to prove that the algorithm might not be proof to cryptoanalysis. 
+Sadly they weren't able to find any critical vulnerabilities of this standard.
+
+A bigger problem of DES might be de length of encryption key. In case of 56 bit key there are possible `2^56 = 72057594037927936` keys. It is not a lot considering the fact that modern multi threaded processors can check 10<sup>9</sup> combinations per second. 
+
+
+| Name | Block size _(bits)_ | Key size _(bits)_ | Time needed to break (10<sup>9</sup> tries/s) |
+| --- | --- | --- | --- |
+| DES | 64 | 56 | 1,125 year | 
+| AES | 128 | 128 | 5,3*10<sup>21</sup> years |
+| AES | 128 | 192 | 9,8*10<sup>40</sup> years |
+| AES | 128 | 256 | 1,8*10<sup>60</sup> years |
+
+AES kinda rulez huh?
+
+There is also a thing called 3DES and that's a desperate way of trying not to let this old guy die.
+If I'm understanding that correctly these guys made it possible to just do a triple DES with different keys.

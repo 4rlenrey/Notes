@@ -27,7 +27,9 @@
         - [Queue](#queue)
         - [Priority_Queue](#priority_queue)
         - [Map](#map)
+        - [Pair](#pair)
         - [Set](#set)
+    - [Object Oriented Programming](#object-oriented-programming)
 
 <!-- /TOC -->
 
@@ -674,9 +676,94 @@ m["Some_Text"] = 0;  // insert a new value
 Do I have to even say anything else?
 This is just so cool. It's like an array, but you can use custom keys instead of boring indexes.
 
+### Pair
+
+```cpp
+std::pair<int, int> m;
+
+m.first = 4; //accessing the first object
+m.second = 4; //accessing the second object
+```
+
 ### Set
 
 Sets are similar to priority_queues, because you can specify the order you want your content to be stored in.
 It's useful when you need a container that can provide a easy and fast way of checking if a specific value exists.
 
 Like I said, C++ is simple.
+
+## Object Oriented Programming
+
+Let's consider this simple idea:
+_What if I wanted to create a simple vector that contains people's information?_
+
+Example
+```txt
+Person's name: Paul
+Person's year of birth: 2003
+Person's nationality: Poland
+Person's hobby: IT
+```
+We could create a vector of pairs but it wouldn't look good;
+```cpp
+std::vector<std::pair<std::pair<std::string, int>, std::pair<std::string, std::string>>>;
+//first.first = name
+//first.second = age
+```
+THIS LOOKS AWFUL!
+
+What we could do is creating our type.
+We can do that by using `class` or `struct` keyword. Their only difference is that class has all the elements private by default and struct has them public.
+
+I'm gonna be using classes.
+
+Let's now create my own Person type.
+```cpp
+class Person{
+
+public:
+    std::string nationality;
+    int year_of_birth;
+    std::string name;
+    std::string hobby;
+}; 
+//remember about the semicolon at the end of class definition
+```
+
+Now we can create a simple instance of this type in a simple program.
+
+```cpp
+#include <iostream>
+#include <string>
+
+class Person{
+public:
+    std::string nationality;
+    int year_of_birth;
+    std::string name;
+    std::string hobby;
+}; 
+
+int main()
+{
+    Person me; //declare object me from type Person
+    me.year_of_birth = 2003;
+    me.nationality = "Poland";
+    me.name = "Paul";
+    me.hobby = "IT";
+
+    std::cout << me.name; 
+    return 0;
+}
+```
+Should output
+```sh
+Paul
+```
+
+We could also create a vector of this stuff
+
+```cpp
+std::vector<Person> v;
+```
+You have to agree with me that it looks better than the first `std::pair` solution.

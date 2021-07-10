@@ -12,14 +12,21 @@
     - [Basics](#basics)
         - [Getting started](#getting-started)
         - [Comments](#comments)
+        - [Whitespaces](#whitespaces)
     - [Statements and flow control](#statements-and-flow-control)
         - [Conditional statements](#conditional-statements)
         - [Loops](#loops)
     - [Variables](#variables)
         - [Data types](#data-types)
+        - [Arrays](#arrays)
+        - [Scope](#scope)
+        - [Pointers](#pointers)
+        - [Dynamic memory allocation](#dynamic-memory-allocation)
     - [Functions](#functions)
         - [Syntax](#syntax)
         - [Declaration](#declaration)
+        - [Overloading](#overloading)
+        - [Templates](#templates)
     - [STL containers](#stl-containers)
         - [Vector](#vector)
         - [Stack](#stack)
@@ -30,6 +37,9 @@
         - [Pair](#pair)
         - [Set](#set)
     - [Object Oriented Programming](#object-oriented-programming)
+        - [Access keywords](#access-keywords)
+        - [Constructor and Destructor](#constructor-and-destructor)
+        - [Inheritance](#inheritance)
 
 <!-- /TOC -->
 
@@ -173,6 +183,18 @@ The output would be:
 ```sh
 5
 ```
+
+### Whitespaces
+
+C++ does not care so much about whitespaces unlike python does. 
+You can do that here:
+```cpp
+#include <iostream>
+int main() 
+{int x; std::cin >> x; x += 2; std::cout << x; return 0; }
+```
+Yes, It's a working script ;)
+
 ## Statements and flow control
 ---
 
@@ -333,6 +355,8 @@ Using this magic looks like this:
 short int v = 10;
 ```
 
+### Arrays
+
 You might be asking yourself a question.
 What if I wanted to use 5 numbers?
 Would declaring them look like this?:
@@ -407,7 +431,119 @@ Would print out this
 ```sh
 3
 ```
+
+### Scope
+Let's consider this example:
+```cpp
+int main()
+{ //scope level 1
+    
+    int x = 1;
+    if(x == 1)
+    { //scope level 2
+
+        int y = x + 3;
+        y = 2+3;
+    
+    
+    }// Delete all variables from this scope (y)
+    else
+    { //new scope level 2
+
+        int y = x + 100;
+        int f = x + 100;
+        int g = x + 100;
+    }// Delete all variables from this scope (y, f, g)
+    
+//you cannot use y here because it's been deleted
+}
+```
+
+Basically all variables can only be accessed in the same or the upper scope that they've been created.
+
+### Pointers
+
+To simply visualize pointers you're gonna have to look at this code for a second.
+```cpp
+#include <iostream>
+int main()
+{
+    int m = 5; //we initialize a variable with a value of 5 
+
+    int *k = &m; //we initialize a pointer variable to point to this m variable
+    std::cout << k;
+    return 0;
+}
+```
+This program is going to output:
+```sh
+0x7ffe7b827b74
+```
+But let's run it one more time:
+```sh
+0x7fff556de9f4
+```
+It's different!
+
+That's because when we initialized this variable our program picked available part of RAM (Not used by any other program or system).
+Because our system is constantly allocating and deallocating some parts of memory, 
+there's a really small chance for you to have the same part of memory used twice.
+
+But why are those pointer useful and how do you even use them?
+
+Let's first establish how would you get a value of a part of memory your pointer points to.
+```cpp
+#include <iostream>
+int main()
+{
+    int m = 5;
+    int *k = &m; 
+    std::cout << *k; //now we are outputting not the memory location but what's in there
+    return 0;
+}
+```
+The output now is:
+```sh
+5
+```
+You can think of a pointer as the number of your house.
+Courier does not need to know what's in your house to deliver your package.
+Just like you do not need to pass the 100mb string to your function. You can pass a pointer to it.
+
+### Dynamic memory allocation
+
+Like I was saying: _Courier does not need to know what's in your house to deliver your package.
+Just like you do not need to pass the 100mb string to your function. You can pass a pointer to it._
+
+Creating a variable like I did it before:
+```cpp
+int x = 9;
+```
+Would put this variable on a function stack.
+There are a few disadvantages of that.
+
+ - Your variable will be deleted when the function returns;
+ - Your stack size is limited so your variables have a specific size limit.
+
+You can change that by creating a variable with the `new` keyword. It'll instead of creating a variable on stack, create it on heap.
+
+It'd look like this.
+```cpp
+int *x = new int; //create a pointer to newly allocated int-type of memory
+std::string *x = new std::string;
+int *arr = new int [5]; //create a pointer to dynamically allocated array with size of 5 elements
+```
+
+REMEMBER TO LATER DELETE ALLOCATED MEMORY!!!.
+```cpp
+delete x; //x should be a pointer to dynamically allocated variable
+
+delete []arr; //arr should be a pointer to dynamically allocated array
+```
+
+
 ## Functions
+---
 
 When you don't want to put everything in `main` function or you want to make some parts of your code reusable you create your own functions.
 
@@ -523,8 +659,85 @@ void print_array(const int &arr[]) //writing what it should do
 }
 ```
 You always need to declare that the function exist before using it
-## STL containers
 
+### Overloading
+
+You can overload functions
+```cpp
+int add(int a, int b);
+int add(double a, double b); 
+int add(int a, int b, int c); 
+
+int main()
+{
+    int x = add(4, 5, 6); //compiler will recognize which one to choose by types of arguments
+}
+```
+This would work, even tho this functions have the same name.
+All of them have different data coming into them.
+
+You can overload functions by different types and different amounts of arguments.
+Compiler will recognize which one you want to use.
+
+### Templates
+
+You might be asking yourself now: _What if I wanted to have a simple print class for different types?_
+
+**Bad answer:**
+You can use function overloading and do something like this:
+```cpp
+void print(int x)
+{
+    std::cout << x;
+}
+void print(string x)
+{
+    std::cout << x;
+}
+void print(double x)
+{
+    std::cout << x;
+}
+void print(some_type x)
+{
+    std::cout << x;
+}
+```
+**Good answer:**
+You can use templates:
+```cpp
+template <typename T> //where T can be any type of variable
+void print(T x)
+{
+    std::cout << x;
+}
+```
+Let's try this out:
+```cpp
+#include <iostream>
+
+template <typename T> //where T can be any type of variable
+void print(T x)
+{
+    std::cout << x << "\n";
+}
+int main()
+{
+    int x = 0;
+    std::string w = "tttttt";
+    print(x);
+    print(w);
+}
+```
+The output is:
+```sh
+0
+tttttt
+```
+Again, pretty cool huh?
+
+## STL containers
+---
 Sadly, one of the problems related to arrays is that you can't really add any new elements after declaration.
 
 That can be solved by using STL containers.
@@ -693,18 +906,19 @@ It's useful when you need a container that can provide a easy and fast way of ch
 Like I said, C++ is simple.
 
 ## Object Oriented Programming
-
+---
 Let's consider this simple idea:
 _What if I wanted to create a simple vector that contains people's information?_
 
-Example
+Example of one person's info:
 ```txt
 Person's name: Paul
 Person's year of birth: 2003
 Person's nationality: Poland
 Person's hobby: IT
 ```
-We could create a vector of pairs but it wouldn't look good;
+
+We could create a vector of pair of pairs;
 ```cpp
 std::vector<std::pair<std::pair<std::string, int>, std::pair<std::string, std::string>>>;
 //first.first = name
@@ -712,10 +926,10 @@ std::vector<std::pair<std::pair<std::string, int>, std::pair<std::string, std::s
 ```
 THIS LOOKS AWFUL!
 
-What we could do is creating our type.
+What we could better do is create our own type.
 We can do that by using `class` or `struct` keyword. Their only difference is that class has all the elements private by default and struct has them public.
 
-I'm gonna be using classes.
+I'm gonna be using classes because classes are the c++ standard way of doing this.
 
 Let's now create my own Person type.
 ```cpp
@@ -767,3 +981,139 @@ We could also create a vector of this stuff
 std::vector<Person> v;
 ```
 You have to agree with me that it looks better than the first `std::pair` solution.
+
+ - parameters = variables inside class
+ - methods = functions inside class
+
+
+### Access keywords
+
+What about this `public` thingy?
+
+I'd say that it's pretty easy.
+Class has its own members. Like `name` in the example above.
+
+All class members are private by default but like in the example above you can do `public:` keyword and all members **under it** will be public.
+
+There are three possible access types. 
+
+- Public - _members are accessible for everything_
+
+- Private - _members are only accessible within the class defining them and by friends of their class_
+
+- Protected - _like in private but also in classes that inherit from that class_
+
+So this
+```cpp
+class Animal{
+    int max_age;
+public:
+    void set_max_age(int max_age);
+};
+
+int main()
+{
+    Animal cat;
+    cat.max_age = 3; //would give an error
+}
+```
+Would give an error because `int max_age` is private by default and can only be accessed by other members from the class.
+
+You can see that I've created a simple function declaration within a function.
+Yes, this is possible.
+
+That's how you can actually do this without changing the access type of this max_age member.
+
+```cpp
+class Animal{
+    int max_age;
+public:
+    void set_max_age(int max_age);
+};
+
+void Animal::set_max_age(int max_age)
+{
+    this->max_age = max_age;
+}
+
+int main()
+{
+    Animal cat;
+    cat.set_max_age(3); //we are invoking this public method
+}
+```
+### Constructor and Destructor
+
+Is there a possibility of creating a method invoked on Creation/deletion of a object from my class?
+
+Yes, there is.
+
+Those methods are called:
+
+ - constructor = method called when creating an object. Can be used for setting some initial data.
+
+ - destructor = method called when deleting an object. Can be used for deleting allocated memory etc.
+
+How do you use them?
+ 
+It's simple
+```cpp
+#include <iostream>
+class Cat{
+    int age;
+public:
+    Cat(); //Constructor
+    Cat(int age); //Constructor overload 
+    ~Cat(); //Destructor
+};
+
+Cat::Cat() //constructor when no value provided 
+{
+    this->age = 0;
+    std::cout << "woooooo, I'm being constructed ;) " << "My age is " << this->age << "\n";
+}
+
+Cat::Cat(int age) //constructor overload when age value provided
+{
+    this->age = age;
+    std::cout << "woooooo, I'm being constructed ;) " << "My age is " << this->age << "\n";
+}
+
+Cat::~Cat() // destructor   
+{
+    std::cout << "woooooo, I'm being deleted ;) " << "My age was " << this->age << "\n" ;
+}
+
+int main()
+{
+    Cat ron; //constructor invoked
+    Cat don(5); //constructor invoked (passed a value to it)
+} //destructors invoked because the objects are deleted
+```
+
+This program will output this:
+```txt
+woooooo, I'm being constructed ;) My age is 0
+woooooo, I'm being constructed ;) My age is 5
+woooooo, I'm being deleted ;) My age was 5
+woooooo, I'm being deleted ;) My age was 0
+```
+Note that I've never invoked any functions manually.
+Pretty cool huh?
+
+### Inheritance
+
+You might be asking yourself another question now.
+What if I wanted to create a base class like `Animal` and then create subclasses like
+`cat` and `dog` based on this `Animal` class.
+
+Lets create a base `Animal` class first.
+```cpp
+class Animal{
+public:
+    std::string sound;
+    int age;
+    void make_sound();
+};
+```
+Then we can create cat class that inherits from this Animal class.

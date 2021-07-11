@@ -513,7 +513,7 @@ Just like you do not need to pass the 100mb string to your function. You can pas
 ### Dynamic memory allocation
 
 Like I was saying: _Courier does not need to know what's in your house to deliver your package.
-Just like you do not need to pass the 100mb string to your function. You can pass a pointer to it._
+Just like you do not need to pass the 100mb string to your function. You can pass a pointer to it, Just like courier only needs your home address._
 
 Creating a variable like I did it before:
 ```cpp
@@ -1117,3 +1117,17 @@ public:
 };
 ```
 Then we can create cat class that inherits from this Animal class.
+
+```cpp
+class Cat : public Animal{
+    Cat();
+    void drink_milk();
+}
+```
+The cat class will have all public stuff from the Animal class.
+
+You can now do:
+```cpp
+Cat mrm;
+mrm.age = 3;
+```

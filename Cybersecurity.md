@@ -13,6 +13,8 @@
             - [Bruteforce](#bruteforce)
             - [Frequency analysis](#frequency-analysis)
             - [Block cipher](#block-cipher)
+        - [Asymmetric encryption](#asymmetric-encryption)
+        - [Authentication](#authentication)
 
 <!-- /TOC -->
 
@@ -202,3 +204,28 @@ AES kinda rulez huh?
 
 There is also a thing called 3DES and that's a desperate way of trying not to let this old guy die.
 If I'm understanding that correctly these guys made it possible to just do a triple DES with different keys.
+
+But what if you have more data than a 64 bit block.
+That's when the most common method of doing it comes in.
+ 
+**ECB** - _Electronic codebook_ - You split your data into *n* *  (64 or 128 bit blocks) and you encrypt it with the same algorithm and with the same key.
+
+To avoid cryptoanalysis weaknesses there is a thing called _modes of operation_
+I'll get to that later.
+
+### Asymmetric encryption
+
+Asymmetric cryptography is also known as public-key cryptography.
+It uses a pair of keys.
+
+ - Public key - Publicly available, used to encrypt stuff. 
+ - Private key - Stored carefully, used to decrypt stuff.
+
+That's basically how it looks:
+![Diagram](Assets/Crypto2.png)
+
+### Authentication
+
+Authentication in general has a lot of pluses and a bit of minuses.
+It takes care of accountability, confidentiality and integrity. The minus might be that it makes it harder to access your data.
+

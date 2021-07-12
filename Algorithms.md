@@ -46,7 +46,7 @@ There are some different types of sorting algorithms.
 ### Bubble sort
 
 One of the slow sorting algorithms.
-It compares every pair until reached the end
+It compares every pair until it had reached the end.
 It can be optimized by not comparing the last sorted pairs.
 
 This is basically how it would look like:
@@ -68,4 +68,7 @@ for(int i = 0; i < size-1; i++)
 ```
 where `size` is the size of array and `array` is the array we want to sort
 
-Complexity: **O(n*n)**
+Complexity:
+ - worst case = **O(n*n)** 
+ - avg case = **O(n log n)** 
+

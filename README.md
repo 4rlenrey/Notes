@@ -13,6 +13,7 @@
 * [C++11](Cpp11.md)
 * [Algorithms](Algorithms.md)
 * [Data Structures](Data-Structures.md)
+* [Math](Math.md)
 
 ## Read before using
 ---

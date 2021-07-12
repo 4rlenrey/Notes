@@ -218,15 +218,38 @@ I'll get to that later.
 Asymmetric cryptography is also known as public-key cryptography.
 It uses a pair of keys.
 
- - Public key - Publicly available, used to encrypt stuff. 
- - Private key - Stored carefully, used to decrypt stuff.
-
 That's basically how it looks:
 
 ![Diagram](Assets/Crypto2.png)
+
+One of the misconceptions is that public-key cryptography is les vulnerable to cryptoanalysis. There's actually no proof behind that statement.
+
+It's build out of a few things:
+
+ - Public key - _used to encrypt_
+ - Private key - _used to decrypt_
+ - Plaintext - _Something we want to encrypt_
+ - Ciphertext - _Something we want to encrypt_
+ - Encryption Algorithm - _Algorithm to encrypt stuff using public key_
+ - Decryption Algorithm - _Algorithm to decrypt stuff using private key_
+
+And this is more confidentiality based.
+There's also another way of doing it.
+
+
+This second way puts more pressure on authenticity.
+
+This is how it looks:
+
+![Diagram](Assets/Crypto3.png)
+
+It's more about digital signing and proving the author of a specific content.
+That way you can make sure that content is untouched by anyone.
 
 ### Authentication
 
 Authentication in general has a lot of pluses and a bit of minuses.
 It takes care of accountability, confidentiality and integrity. The minus might be that it makes it harder to access your data.
+
+
 

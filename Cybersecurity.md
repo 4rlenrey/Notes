@@ -222,6 +222,7 @@ It uses a pair of keys.
  - Private key - Stored carefully, used to decrypt stuff.
 
 That's basically how it looks:
+
 ![Diagram](Assets/Crypto2.png)
 
 ### Authentication

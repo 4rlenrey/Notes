@@ -6,6 +6,7 @@
     - [Bases](#bases)
         - [What even is algorithm?](#what-even-is-algorithm)
         - [Why is it needed?](#why-is-it-needed)
+    - [Greatest common divisor](#greatest-common-divisor)
     - [Sorting](#sorting)
         - [Bubble sort](#bubble-sort)
 
@@ -37,6 +38,21 @@ for(int i = 0; i < 100; i++)
 What do you think is going to be faster? One operation of increasing it by 100 or 100 times increasing it by one?
 
 Yes, algorithms are trying to find the most efficient and easiest way of doing stuff.
+
+## Greatest common divisor
+
+Simple algorithm that can easily find greatest common divisor.
+My c++ implementation:
+```cpp
+while(a != b)
+{
+    if (a > b)
+        a = a - b;
+    else 
+        b = b - a;
+}
+int gcd = a; //GCD of a and b
+```
 
 
 ## Sorting
@@ -71,4 +87,3 @@ where `size` is the size of array and `array` is the array we want to sort
 Complexity:
  - worst case = **O(n*n)** 
  - avg case = **O(n log n)** 
-

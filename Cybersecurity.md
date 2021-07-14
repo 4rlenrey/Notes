@@ -61,8 +61,9 @@ There's another way of separating attacks into two categories;
 | Trojan horse | Computer program disguised as legitimate software but hiding a potentially harmful function |
 | Rootkit | Set of tools that enable an unauthorized user to get administrator privileges |
 | Logic Bomb | Set of instructions secretly incorporated into a program so that if a particular condition is satisfied they'll start doing (usually harmful) stuff |
-| DoS | Denial of Service |
-| Flooders | Tools used to generate big amounts of data to achieve DoS |
+| DoS | Denial of Service attack |
+| DDoS | Distributed denial of Service attack |
+| Flooders | Tools used to generate big amounts of data to achieve denial of service |
 | Keyloggers | Type of malware that records keystrokes to gain access to passwords and other valuable information |
 | Zombie | Compromised computer by the hacker with intentions to use it in a malicious way |
 | Spammer programs | Programs that sends lots of unwanted content through different social platforms |

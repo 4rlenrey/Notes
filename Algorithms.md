@@ -8,6 +8,9 @@
         - [Why is it needed?](#why-is-it-needed)
     - [Greatest common divisor](#greatest-common-divisor)
     - [Exponentiation by squaring](#exponentiation-by-squaring)
+    - [Primality test](#primality-test)
+        - [Checking the divisibility](#checking-the-divisibility)
+        - [Eratosthenes Sieve](#eratosthenes-sieve)
     - [Sorting](#sorting)
         - [Bubble sort](#bubble-sort)
 
@@ -112,6 +115,82 @@ long rlen_pow(long base, int exponent)
 Complexity
  - **O(log n)** 
 
+
+## Primality test
+
+We have a few ways to check if a number is prime or to get a set of primes.
+
+### Checking the divisibility
+
+To check if number **n** is prime we can check if this number is divisible by every number from **2** to **n/2**
+
+That's my implementation of this algorithm:
+```cpp
+bool check_if_prime(int x)
+{
+    bool if_prime = (x > 1); //one is not prime
+
+    for (int i = 2; i < (x / 2); i++) //the biggest divisor of a number is number/2
+    {
+        if (x % i == 0)
+        {
+            return false; //if divisor found then theres no need to continue checking
+        }
+    }
+    return if_prime;
+}
+```
+
+### Eratosthenes Sieve
+
+Every singe number that is not a prime is a multiplied version of a prime.
+Eg. 14 = 2 * 7
+
+Now, if we had an array of booleans set to `true` we could eliminate every multiplication of prime by setting all the indexes of non-primes to false. That can be done by just looking for every single multiplication of a number until we reach its square (for 2 it would be 4 and for 7 it would be 49)
+
+This is basically how it would look like in c++.
+```cpp
+void eratosthenes_sieve(int size)
+{
+    bool numbers[size + 1]; //arrays start counting from 0
+    for(bool& number : numbers) //set all the numbers to true first
+        number = true;
+
+    numbers[0] = false; //not a prime    
+    numbers[1] = false; //not a prime    
+
+    for(int i = 2; i <= size; i++) //going through all of them
+    {
+        if(numbers[i]) //if prime
+        {
+            for(int j = i + i; (j <= i*i && j <= size); j += i) //all the multiplications of a prime are not prime 
+            {
+                numbers[j] = false;
+            }
+        }
+    }
+
+    for(int i = 0; i <= size; i++) //printing all the true indexes (they are primes)
+    {
+        if(numbers[i]) cout << i << "\t";
+    }
+}
+```
+
+So if we used this function with a bit of driver code:
+```cpp
+int main()
+{
+    eratosthenes_sieve(20); 
+    std::cout << "\n";
+    return 0;
+}
+```
+the output should be:
+```txt
+2       3       5       7       8       11      12      13      17      18      19
+```
+
 ## Sorting
 
 There are some different types of sorting algorithms.
@@ -144,5 +223,4 @@ where `size` is the size of array and `array` is the array we want to sort
 Complexity:
  - worst case = **O(n*n)** 
  - avg case = **O(n log n)** 
-
 

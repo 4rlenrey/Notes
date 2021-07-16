@@ -14,6 +14,7 @@
             - [Frequency analysis](#frequency-analysis)
             - [Block cipher](#block-cipher)
         - [Asymmetric encryption](#asymmetric-encryption)
+            - [RSA](#rsa)
         - [Authentication](#authentication)
 
 <!-- /TOC -->
@@ -246,6 +247,21 @@ This is how it looks:
 
 It's more about digital signing and proving the author of a specific content.
 That way you can make sure that content is untouched by anyone.
+
+#### RSA
+
+In RSA the keys are generated in this simple way.
+
+1.  You choose two different primes.
+    _They should be kept secret (obviously)_
+
+2. You compute a multiplication of those.
+    _It'll be used as a modulus for both public and private keys and it's gonna be a part of public key._
+
+3. Calculate **&lambda;(x)** where x is this multiplication of primes. **&lambda;(x)** is Carmichael's function.  I've covered that in my Math notes. There is a shortcut for counting that tho. Because we're talking about primes you can speed process up by instead of counting lambda of x you can do Least common multiple of &lambda;(first_prime) and &lambda;(second_prime). And because they're primes _(&lambda;(prime) = prime - 1)_  you can do: &lambda;(x) = lcm(first_prime - 1, second_prime -1); And you can count lcm through euclidean algorithm.
+
+4. 
+
 
 ### Authentication
 

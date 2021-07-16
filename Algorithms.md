@@ -11,6 +11,7 @@
     - [Primality test](#primality-test)
         - [Checking the divisibility](#checking-the-divisibility)
         - [Eratosthenes Sieve](#eratosthenes-sieve)
+        - [Linear Sieve](#linear-sieve)
     - [Sorting](#sorting)
         - [Bubble sort](#bubble-sort)
 
@@ -128,8 +129,6 @@ That's my implementation of this algorithm:
 ```cpp
 bool check_if_prime(int x)
 {
-    bool if_prime = (x > 1); //one is not prime
-
     for (int i = 2; i < (x / 2); i++) //the biggest divisor of a number is number/2
     {
         if (x % i == 0)
@@ -137,7 +136,7 @@ bool check_if_prime(int x)
             return false; //if divisor found then theres no need to continue checking
         }
     }
-    return if_prime;
+    return true;
 }
 ```
 
@@ -163,7 +162,7 @@ void eratosthenes_sieve(int size)
     {
         if(numbers[i]) //if prime
         {
-            for(int j = i + i; (j <= i*i && j <= size); j += i) //all the multiplications of a prime are not prime 
+            for(int j = i + i; j <= size; j += i) //all the multiplications of a prime are not prime 
             {
                 numbers[j] = false;
             }
@@ -188,8 +187,14 @@ int main()
 ```
 the output should be:
 ```txt
-2       3       5       7       8       11      12      13      17      18      19
+2       3       5       7       11      13      17       19
 ```
+Complexity
+- **O(n log log n)**
+
+### Linear Sieve
+
+It's called linear sieve because it works in a O(n) complexity (and that's linear complexity).
 
 ## Sorting
 

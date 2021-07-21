@@ -4,18 +4,18 @@
 <!-- TOC -->
 
 - [Cybersecurity](#cybersecurity)
-    - [Solid base and terminology](#solid-base-and-terminology)
-        - [Terminology](#terminology)
-    - [Cryptography](#cryptography)
-        - [Symmetric encryption](#symmetric-encryption)
-            - [One-time pad cryptography](#one-time-pad-cryptography)
-            - [Cryptoanalysis](#cryptoanalysis)
-            - [Bruteforce](#bruteforce)
-            - [Frequency analysis](#frequency-analysis)
-            - [Block cipher](#block-cipher)
-        - [Asymmetric encryption](#asymmetric-encryption)
-            - [RSA](#rsa)
-        - [Authentication](#authentication)
+	- [Solid base and terminology](#solid-base-and-terminology)
+		- [Terminology](#terminology)
+	- [Cryptography](#cryptography)
+		- [Symmetric encryption](#symmetric-encryption)
+			- [One-time pad cryptography](#one-time-pad-cryptography)
+			- [Cryptoanalysis](#cryptoanalysis)
+			- [Bruteforce](#bruteforce)
+			- [Frequency analysis](#frequency-analysis)
+			- [Block cipher](#block-cipher)
+		- [Asymmetric encryption](#asymmetric-encryption)
+			- [RSA](#rsa)
+		- [Authentication](#authentication)
 
 <!-- /TOC -->
 
@@ -175,7 +175,7 @@ This is a simple table of three letter frequency (Not all the letters bc I'm laz
 | T | 9.37 % |
 | A | 8.34 % |
 
-And this is the frequency for letters in this ciphertext (Didnt include all bc it'd be really long):
+And this is the frequency for letters in this ciphertext (Didn't include all bc it'd be really long):
 
 | Letter | Frequency|
 | --- | ------ |
@@ -252,16 +252,20 @@ That way you can make sure that content is untouched by anyone.
 
 In RSA the keys are generated in this simple way.
 
-1.  You choose two different primes.
+1.  You choose two different primes. **p and q**
     _They should be kept secret (obviously)_
 
-2. You compute a multiplication of those.
+2. You compute a multiplication of those. **n = pq**
     _It'll be used as a modulus for both public and private keys and it's gonna be a part of public key._
 
-3. Calculate **&lambda;(x)** where x is this multiplication of primes. **&lambda;(x)** is Carmichael's function.  I've covered that in my Math notes. There is a shortcut for counting that tho. Because we're talking about primes you can speed process up by instead of counting lambda of x you can do Least common multiple of &lambda;(first_prime) and &lambda;(second_prime). And because they're primes _(&lambda;(prime) = prime - 1)_  you can do: &lambda;(x) = lcm(first_prime - 1, second_prime -1); And you can count lcm through euclidean algorithm.
+3. Calculate **&lambda;(n)** where n is this multiplication of primes. **&lambda;(n)** is Carmichael's function.  I've covered that in my Math notes. There is a shortcut for counting that tho. Because we're talking about primes you can speed process up by instead of counting lambda of n you can do Least common multiple of &lambda;(first_prime) and &lambda;(second_prime). And because they're primes _(&lambda;(prime) = prime - 1)_  you can do: &lambda;(n) = lcm(first_prime - 1, second_prime -1); And you can count lcm through euclidean algorithm.
 
-4. 
+4. Chose an integer **e** so that **&lambda;(n)** and **e** are coprime and **1 < e < &lambda;(n)**
+The easiest pick would be 3 but it might be less secure. That's why **2<sup>16</sup> + 1** is the most commonly picked option.
+**e** is a part of a public key.
 
+5. Calculate **d &Congruent; e<sup>-1</sup>(mod &lambda;(n))** 
+ 
 
 ### Authentication
 

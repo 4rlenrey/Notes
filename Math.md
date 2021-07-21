@@ -4,21 +4,21 @@
 <!-- TOC -->
 
 - [Math](#math)
-    - [Uh huh?](#uh-huh)
-    - [Primes](#primes)
-        - [What is a prime](#what-is-a-prime)
-        - [Coprime numbers](#coprime-numbers)
-    - [Carmichael function](#carmichael-function)
-        - [Modular exponentiation](#modular-exponentiation)
-            - [Memory-efficient method](#memory-efficient-method)
-            - [Even more efficient method:](#even-more-efficient-method)
+	- [Uh huh?](#uh-huh)
+	- [Primes](#primes)
+		- [What is a prime](#what-is-a-prime)
+		- [Coprime numbers](#coprime-numbers)
+	- [Carmichael function](#carmichael-function)
+		- [Modular exponentiation](#modular-exponentiation)
+			- [Memory-efficient method](#memory-efficient-method)
+			- [Even more efficient method:](#even-more-efficient-method)
 
 <!-- /TOC -->
 
 ## Uh huh?
 ---
 
-I was supposed not to make a markdown math file. But yeah, didnt know where to put some of the stuff I needed to understand/learn in cryptography.
+I was supposed not to make a markdown math file. But yeah, didn't know where to put some of the stuff I needed to understand/learn in cryptography.
 
 
 ## Primes

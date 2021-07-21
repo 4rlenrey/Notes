@@ -14,6 +14,7 @@
 * [Algorithms](Algorithms.md)
 * [Data Structures](Data-Structures.md)
 * [Math](Math.md)
+* [Networking](Networking.md)
 
 ## Read before using
 ---
@@ -37,3 +38,4 @@ For now I can only recommend a few books that I've read, those being:
 - "C++ Beginner's guide" ~ Alex Allain
 - "The C++ Programming Language, 4th Edition" ~ Bjarne Stroustrup
 - "Computer Security: Principles and Practice (4th Edition)" ~ William Stallings and Lawrie Brown
+- Everything from here: https://goalkicker.com/

@@ -3,17 +3,17 @@
 <!-- TOC -->
 
 - [Algorithms](#algorithms)
-    - [Bases](#bases)
-        - [What even is algorithm?](#what-even-is-algorithm)
-        - [Why is it needed?](#why-is-it-needed)
-    - [Greatest common divisor](#greatest-common-divisor)
-    - [Exponentiation by squaring](#exponentiation-by-squaring)
-    - [Primality test](#primality-test)
-        - [Checking the divisibility](#checking-the-divisibility)
-        - [Eratosthenes Sieve](#eratosthenes-sieve)
-        - [Linear Sieve](#linear-sieve)
-    - [Sorting](#sorting)
-        - [Bubble sort](#bubble-sort)
+	- [Bases](#bases)
+		- [What even is algorithm?](#what-even-is-algorithm)
+		- [Why is it needed?](#why-is-it-needed)
+	- [Greatest common divisor](#greatest-common-divisor)
+	- [Exponentiation by squaring](#exponentiation-by-squaring)
+	- [Primality test](#primality-test)
+		- [Checking the divisibility](#checking-the-divisibility)
+		- [Eratosthenes Sieve](#eratosthenes-sieve)
+		- [Linear Sieve](#linear-sieve)
+	- [Sorting](#sorting)
+		- [Bubble sort](#bubble-sort)
 
 <!-- /TOC -->
 

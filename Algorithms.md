@@ -7,6 +7,7 @@
 		- [What even is algorithm?](#what-even-is-algorithm)
 		- [Why is it needed?](#why-is-it-needed)
 	- [Greatest common divisor](#greatest-common-divisor)
+		- [Extended Euclidean algorithm](#extended-euclidean-algorithm)
 	- [Exponentiation by squaring](#exponentiation-by-squaring)
 	- [Primality test](#primality-test)
 		- [Checking the divisibility](#checking-the-divisibility)
@@ -46,6 +47,8 @@ Yes, algorithms are trying to find the most efficient and easiest way of doing s
 
 ## Greatest common divisor
 
+This is also called Euclidean algorithm.
+
 Simple algorithm that can easily find greatest common divisor.
 My c++ implementation:
 ```cpp
@@ -58,6 +61,25 @@ while(a != b)
 }
 int gcd = a; //GCD of a and b
 ```
+It's inefficient tho.
+Better version of it would be:
+```cpp
+while(b)
+{
+    int temp = b;
+    b = a % b;
+    a = temp;
+}
+int gcd = a; //GCD of a and b
+```
+### Extended Euclidean algorithm
+
+It's just extended GCD by coefficients of Bezout identity(x, y). 
+
+This is the math representation:
+**ax + by = gcd(a,b)**
+
+
 
 ## Exponentiation by squaring
 
@@ -119,7 +141,7 @@ Complexity
 
 ## Primality test
 
-We have a few ways to check if a number is prime or to get a set of primes.
+We have a few ways to check if a number is prime or to get a set of primes. 
 
 ### Checking the divisibility
 

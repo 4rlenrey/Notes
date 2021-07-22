@@ -24,7 +24,7 @@ Do not use it if you want to get good by reading it! I am pretty sure that skill
 ## What is this thing?
 ---
 
-This is a digital version of my notes. I've made them based on a bit of books, articles and videos. Every single word in here is written by me. I used HTML and some CSS to make it somehow readable. (I'm not a graphic designer nor a front end developer so please don't judge me). I'm doing it to be able to have a solid copy of my learning mindset for when I'm not gonna be able to remember something from here. (Also I had some internet issues and had access only to some programming books and got a bit bored) For now you can't really contribute to this but if you want to point out some misspelling/grammar issues feel free to contact me.
+This is a digital version of my notes. I've made them based on a bit of books, articles and videos. Every single word in here is written by me. I'm doing it to be able to have a solid copy of my learning mindset for when I'm not gonna be able to remember something from here. (Also I had some internet issues and had access only to some programming books and got a bit bored) For now you can't really contribute to this but if you want to point out some misspelling/grammar issues feel free to contact me.
 
 ## How to reach the creator?
 ---

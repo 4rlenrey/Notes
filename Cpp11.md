@@ -1,4 +1,6 @@
-# C++11 Notes
+# C++11 Notes 
+
+Made by 4rlenrey
 
 <!-- TOC -->
 
@@ -112,7 +114,7 @@
 ---
 ### Getting started
 
-_Lots of people hate C++ and honestly, I can~'t~ understand why._  
+_Lots of people hate C++ and honestly, I ~~don't~~ understand why._  
 To be able to use/run your basic C++ code you have to go through some steps;
 
 1.  Compiling your source files to object files _file1.cpp, file2.cpp -> file1.o, file2.o_

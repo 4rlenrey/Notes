@@ -77,6 +77,12 @@ curl -GET  http://example.com/ -H "User-Agent: My_Browser_lol"
 And it'll say that this request was made by `My_Browser_lol`.
 Pretty useful when trying to let's say bypass a blockade for users from specific browser.
 
+You can also use `X-Forwarded-For` to bypass some sort of authentication related to only allowing local addresses to access the page.
+```sh
+curl -GET  http://example.com/ -H "X-Forwarded-For: 192.168.1.20"
+```
+It specifies the address which the request is made by.
+
 #### HTTPS
 
 Https is an encrypted version of http. So if anyone in the caffee will try to steal your passwords by looking at what is going through the router then he cannot get those information because it's encrypted.

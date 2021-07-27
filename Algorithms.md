@@ -218,6 +218,7 @@ Complexity
 
 It's called linear sieve because it works in a O(n) complexity (and that's linear complexity).
 
+
 ## Sorting
 
 There are some different types of sorting algorithms.

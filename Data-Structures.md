@@ -5,6 +5,7 @@
 	- [What even is data structure?](#what-even-is-data-structure)
 	- [Stack](#stack)
 	- [Queue](#queue)
+	- [Matrix](#matrix)
 
 <!-- /TOC -->
 
@@ -31,12 +32,13 @@ This is my simple and not secure implementation of a stack in C++:
 template <class T>
 class RlenStack{
     int size = 0;
+    int max_size = 0;
     T *arr = NULL;
 public:
-    RlenStack(int max_size){ this->arr = new T[max_size]; } //allocate memory
-    void push(T element){ this->size++; arr[size-1] = element; } //add to array
-    void pop(){ this->size--; } //decrease size
-    T top(){ return arr[size-1]; } //get the top element from array
+    RlenStack(int max_size){ this->arr = new T[max_size]; this->max_size = max_size;} //allocate memory
+    void push(T element){if(size<max_size-1) this->size++; arr[size-1] = element; } //add to array
+    void pop(){if(size)this->size--;} //decrease size
+    T top(){ if(size)return arr[size-1]; } //get the top element from array
     int get_size(){ return size; } //return size
     ~RlenStack(){ delete []arr; } //free memory
 };
@@ -48,6 +50,50 @@ s.push(4); //adding element
 s.pop(); //removing element
 int x = s.top(); //getting top element
 ```
+
+After some improvements suggested by w1ndex this is my second implementation
+```cpp
+template <class T>
+class RlenStack{
+    int size = 0;
+    int max_size = 2;
+    T *arr = NULL;
+public:
+    RlenStack(){this->arr = new T[2];} //allocate memory
+    void push(T element)
+    {
+        if(size<max_size-1) 
+        {
+            this->size++; 
+            arr[size-1] = element;
+        }
+        else //reallocation of the main array 
+        {
+            max_size *=2; 
+            T *new_arr = new T[max_size];
+            for(int i = 0; i < size; i++) 
+                new_arr[i] = arr[i];
+            delete []arr;
+            arr = new_arr;
+            new_arr = NULL;
+        }
+    }
+    void pop(){if(size)this->size--;} //decrease size
+    T top(){ if(size)return arr[size-1]; } //get the top element from array
+    int get_size(){ return size; } //return size
+    ~RlenStack(){ delete []arr; } //free memory
+};
+```
+and the usage might be:
+```cpp
+int main()
+{
+	RlenStack<int> *r = new RlenStack<int>;
+	r->push(4);
+	delete r;
+}
+```
+
 ## Queue
 
 Queue follows the FIFO order (first in first out).
@@ -91,6 +137,15 @@ would output:
 1
 2
 ```
-So it works ;)
+So it works :D
+
+## Matrix
+
+Matrix is a rectangular array of numbers.
+Those are some examples of matrix.
+
+![Diagram](Assets/Data3.png)
+
+
 
 

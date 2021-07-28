@@ -53,12 +53,11 @@ int carmichael(int x)
 {
 	if(x == 1)return 1;
 	int m = 0, coprimes_count = 0;
-	long long w = 0;
 	std::vector<int> coprimes;
 	
 	for(int i = 1; i <= x; i++)
 	{
-		if(greatest_common_divisor(i, x) == 1)
+		if(std::gcd(i, x) == 1)
 		{
 			coprimes.push_back(i);
 		}
@@ -69,7 +68,7 @@ int carmichael(int x)
 		m++;
 		for(const auto &c : coprimes)
 		{
-			if(std::pow(c, m)%x == 1) //pow should be changed to a memory-efficient function that supports modulo
+			if(rlen_pow(c, m, x) == 1) //custom modpow function
 				coprimes_count++;
 		}
 	}

@@ -6,6 +6,9 @@
 	- [Stack](#stack)
 	- [Queue](#queue)
 	- [Matrix](#matrix)
+		- [Multiplying each element](#multiplying-each-element)
+		- [Adding two matrices](#adding-two-matrices)
+		- [Rotating](#rotating)
 
 <!-- /TOC -->
 
@@ -146,6 +149,43 @@ Those are some examples of matrix.
 
 ![Diagram](Assets/Data3.png)
 
+### Multiplying each element
 
+Let's consider this matrix `int t[3][4]`:
+```
+[1][1][2][3]
+[6][5][4][3]
+[7][8][9][9]
+```
+If we wanted to multiply all the elements by `6` we would have to do this:
+```cpp
+for(int i = 0; i < 3; i ++) //there are three rows
+    for(int j = 0; j < 4; j++) //4 elements each
+        t[i][j] = t[i][j]*6;
+```
 
+### Adding two matrices
+
+Let's consider this two matrices `int t[3][4]` and `int w[3][4]`:
+```
+[1][1][2][3]
+[6][5][4][3]
+[7][8][9][9]
+
+[7][8][9][9]
+[1][1][2][3]
+[6][5][4][3]
+```
+What if we wanted to add `w` to `t` and store the sum in `int c[3][4]`.
+
+It would look like this:
+```cpp
+for(int i = 0; i < 3; i ++) //there are three rows
+    for(int j = 0; j < 4; j++) //4 elements each
+        c[i][j] = w[i][j] + t[i][j];
+```
+
+### Rotating
+
+You spin me right round! round round! Like a rocket baby right round! round round! 
 

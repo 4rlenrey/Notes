@@ -15,6 +15,7 @@
 		- [Linear Sieve](#linear-sieve)
 	- [Sorting](#sorting)
 		- [Bubble sort](#bubble-sort)
+	- [Prefix sum](#prefix-sum)
 
 <!-- /TOC -->
 
@@ -252,3 +253,41 @@ Complexity:
  - worst case = **O(n*n)** 
  - avg case = **O(n log n)** 
 
+## Prefix sum
+Let's consider this example:
+
+You have a row matrix made out of 100000 elements. You need to 199999999999 times print a sum out of every singe elements between `a` and `b`. 
+
+We could sum them that way:
+```cpp
+for(int i = a; i < b; i++)
+    sum += array[i];
+```
+The problem is that if the `a` would be `0` and `b` would be equal `10000` then we would have to do `100000*199999999999` operations that's because we would be summing those 100000 elements 199999999999 times.
+
+You can say: **Why cant you just sum them once and then print them out this many times?**
+Yeah, that's smart bro. But what if a and b would be changing?
+
+That's where prefix sums comes in ;)
+
+All you need to do is to create a second array containing the previously summed prefixes.
+for example:
+```
+Array of numbers:
+[1][5][6][3][6][8][1][2]
+
+Array of sum of prefixes
+[1][6][12][15][21][29][30][32]
+```
+So we would have to do 10000 operations at the start but when we would later need to get a sum from the first to the fifth element then we would just need to get one from array and we would save 4 additional operations.
+
+You might be asking yourself:
+
+_What if this `a` is bigger than 0?_ 
+
+You can then get a sum from _`0` to `b`_ and subtract a sum _from `0` to `a`_ from it
+
+So if we needed a sum from the third element to the seventh element then we would get a seventh prefix sum (that being 30) and subtract the third prefix sum from it (that being 12).
+So our final sum would be **30 - 12 = 18**
+
+That should work with n-dimensional arrays as well (but with a little bit of changes)

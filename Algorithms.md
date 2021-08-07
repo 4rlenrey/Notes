@@ -8,6 +8,7 @@
 		- [Why is it needed?](#why-is-it-needed)
 	- [Greatest common divisor](#greatest-common-divisor)
 		- [Extended Euclidean algorithm](#extended-euclidean-algorithm)
+		- [Least common multiple](#least-common-multiple)
 	- [Exponentiation by squaring](#exponentiation-by-squaring)
 	- [Primality test](#primality-test)
 		- [Checking the divisibility](#checking-the-divisibility)
@@ -73,12 +74,68 @@ while(b)
 }
 int gcd = a; //GCD of a and b
 ```
+for different inputs
+```
+gcd(15, 10) = 5
+gcd(11, 10) = 1
+gcd(20, 30) = 10
+```
+You can also do recursive:
+
+```cpp
+int gcd(int a, int b)
+{
+    if(a) return gcd(b%a, a);
+    return b;   
+}
+```
+
+
 ### Extended Euclidean algorithm
 
 It's just extended GCD by coefficients of Bezout identity(x, y). 
 
 This is the math representation:
 **ax + by = gcd(a,b)**
+
+C++ implementation:
+```cpp
+int x = 0, x1 = 1;
+int y = 1, y1 = 0;
+
+while(b != 0)
+{
+	int q = a/b;
+	a = b; 
+	b = a % b;
+	x = x1 - q * x;
+	x1 = x;
+	y = y1 - q * y;
+	y1 = y; 
+}
+x = x1;
+y = y1;
+```
+
+
+### Least common multiple
+
+The formula for it looks like this:
+
+**lcm(a, b) = |a*b|/gcd(a,b)**
+
+so the easiest implementation would be:
+```cpp
+int top = (a*b >= 0) ? a*b : a*b*(-1); //ternary for making negative positive (just in case)
+while(b)
+{
+    int temp = b;
+    b = a % b;
+    a = temp;
+}
+int gcd = a;
+int lcm = top/gcd;
+```
 
 
 
@@ -288,6 +345,6 @@ _What if this `a` is bigger than 0?_
 You can then get a sum from _`0` to `b`_ and subtract a sum _from `0` to `a`_ from it
 
 So if we needed a sum from the third element to the seventh element then we would get a seventh prefix sum (that being 30) and subtract the third prefix sum from it (that being 12).
-So our final sum would be **30 - 12 = 18**
+So our final sum would be **30 - 12 = 18** (yeah, you just did 2 instead of 5 operations)
 
 That should work with n-dimensional arrays as well (but with a little bit of changes)

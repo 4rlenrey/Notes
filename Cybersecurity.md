@@ -258,14 +258,31 @@ In RSA the keys are generated in this simple way.
 2. You compute a multiplication of those. **n = pq**
     _It'll be used as a modulus for both public and private keys and it's gonna be a part of public key._
 
-3. Calculate **&lambda;(n)** where n is this multiplication of primes. **&lambda;(n)** is Carmichael's function.  I've covered that in my Math notes. There is a shortcut for counting that tho. Because we're talking about primes you can speed process up by instead of counting lambda of n you can do Least common multiple of &lambda;(first_prime) and &lambda;(second_prime). And because they're primes _(&lambda;(prime) = prime - 1)_  you can do: &lambda;(n) = lcm(first_prime - 1, second_prime -1); And you can count lcm through euclidean algorithm.
+3. Calculate **λ(n)** where n is this multiplication of primes. **λ(n)** is Carmichael's function.  I've covered that in my Math notes. There is a shortcut for counting that tho. Because we're talking about primes you can speed process up by instead of counting lambda of n you can do Least common multiple of λ(first_prime) and λ(second_prime). And because they're primes _(λ(prime) = prime - 1)_  you can do: λ(n) = lcm(first_prime - 1, second_prime -1); And you can count lcm through euclidean algorithm.
 
-4. Chose an integer **e** so that **&lambda;(n)** and **e** are coprime and **1 < e < &lambda;(n)**
+4. Chose an integer **e** so that **λ(n)** and **e** are coprime and **1 < e < λ(n)**
 The easiest pick would be 3 but it might be less secure. That's why **2<sup>16</sup> + 1** is the most commonly picked option.
 **e** is a part of a public key.
 
-5. Calculate **d &Congruent; e<sup>-1</sup>(mod &lambda;(n))** 
+5. Calculate **d &Congruent; e<sup>-1</sup>(mod λ(n))** 
+*d is the modular multiplicative inverse of e modulo λ(n)*
  
+Let's try to go over it:
+
+1. We're picking two primes
+	- p = **6469**
+	- q = **7877**
+2. We're computing n:
+	- n = 6469*7877 = **50956313**
+3. We're computing λ(n):
+	- *λ(n) = lcm(6469-1, 7877-1) = **1157772**
+4. We're choosing e:
+	- e = 2<sup>16</sup> + 1 = **65537**
+5. We're calculating d: 
+	1. d*e ≡ 1 (mod λ(n))
+	2. d*65537 ≡ 1 (mod 1157772)
+	3. d = 7985
+
 
 ### Authentication
 

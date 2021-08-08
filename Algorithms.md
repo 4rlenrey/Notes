@@ -8,6 +8,7 @@
 		- [Why is it needed?](#why-is-it-needed)
 	- [Greatest common divisor](#greatest-common-divisor)
 		- [Extended Euclidean algorithm](#extended-euclidean-algorithm)
+		- [Modular multiplicative inverse](#modular-multiplicative-inverse)
 		- [Least common multiple](#least-common-multiple)
 	- [Exponentiation by squaring](#exponentiation-by-squaring)
 	- [Primality test](#primality-test)
@@ -105,17 +106,116 @@ int y = 1, y1 = 0;
 
 while(b != 0)
 {
-	int q = a/b;
-	a = b; 
-	b = a % b;
-	x = x1 - q * x;
-	x1 = x;
-	y = y1 - q * y;
-	y1 = y; 
+    int q = a/b;
+    int temp = b;
+    b = a % b;
+    a = temp; 
+    temp = x;
+    x = x1 - q * x;
+    x1 = temp;
+    temp = y;
+    y = y1 - q * y;
+    y1 = temp; 
 }
 x = x1;
 y = y1;
 ```
+
+### Modular multiplicative inverse
+
+**a * x ≡ 1 mod m**
+
+We're looking for this **x**
+
+Funny thing is that it does not always exist. It exists when *a* and *m* are coprime. *gcm(a, m) = 1*
+To get this *x* what we can do is we can just use famous **Extended Euclidean algorithm**
+
+Like I said above this is how it looks:
+**ax + by = gcd(a,b)**
+Now we can replace this `gcd` with `1` because they have to be coprime.
+**ax + my = 1**
+Now we can do `modulo m` for both sides:
+**ax ≡ 1 mod m**
+
+so If i had a c++ function `ext_euclidean`:
+```cpp
+int ext_euclidean(int a, int b, int &x, int &y)
+{
+    x = 0;
+    y = 1; //init value for referenced ints
+    
+    int y1 = 0, x1 = 1; //additional vars
+
+    while(b != 0)
+    {
+    	int q = a/b;
+    	int temp = b;
+    	b = a % b;
+    	a = temp; 
+    	temp = x;
+    	x = x1 - q * x;
+    	x1 = temp;
+    	temp = y;
+    	y = y1 - q * y;
+    	y1 = temp; 
+    }
+    x = x1;
+    y = y1;
+    return a;
+}
+```
+We could calculate `x` by doing:
+```cpp
+int x,y;
+int a = 11, m = 17; //some example numbers you can change them
+if(ext_euclidean(a, m, x, y) == 1)
+    x = (x%m+m)%m;
+```
+So our `mod_mul_inv` could look like this:
+```cpp
+int mod_mul_inv(int a, int m)
+{
+    int x = 0, y = 1, b = m;
+    int y1 = 0, x1 = 1;
+
+    while(b != 0)
+    {
+    	int q = a/b;
+    	int temp = b;
+    	b = a % b;
+    	a = temp; 
+    	temp = x;
+    	x = x1 - q * x;
+    	x1 = temp;
+    	temp = y;
+    	y = y1 - q * y;
+    	y1 = temp; 
+    }
+    x = x1;
+    y = y1;
+    if(a == 1) //they have to be coprime
+        return (x%m+m)%m;
+        
+    else 
+       throw "They're not coprime lol";
+    return -1;
+}
+```
+Let's check this functions for a few sample inputs:
+```cpp
+cout << mod_mul_inv(11, 17) << "\n";
+cout << mod_mul_inv(113, 127) << "\n";
+cout << mod_mul_inv(23, 29) << "\n";
+```
+The output would be:
+```
+14
+9
+24
+```
+And IT'S CORRECT!
+
+It's correct because **1 = (11 * 14) mod 17** 
 
 
 ### Least common multiple
@@ -136,8 +236,6 @@ while(b)
 int gcd = a;
 int lcm = top/gcd;
 ```
-
-
 
 ## Exponentiation by squaring
 

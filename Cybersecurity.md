@@ -275,7 +275,7 @@ Let's try to go over it:
 2. We're computing n:
 	- n = 6469*7877 = **50956313**
 3. We're computing λ(n):
-	- *λ(n) = lcm(6469-1, 7877-1) = **1157772**
+	- λ(n) = lcm(6469-1, 7877-1) = **1157772**
 4. We're choosing e:
 	- e = 2<sup>16</sup> + 1 = **65537**
 5. We're calculating d: 
@@ -283,6 +283,28 @@ Let's try to go over it:
 	2. d*65537 ≡ 1 (mod 1157772)
 	3. d = 7985
 
+To encrypt `m` we need to calculate 
+
+c(m) = m<sup>e</sup> mod n
+
+To decrypt `c` we need to calculate
+
+m(c) = m<sup>d</sup> mod n
+
+So we have:
+
+1. Private key (d = 7985, n = 50956313)
+2. Public key (e = 65537, n = 50956313)
+
+Let's go over an encryption/decryption process of `3` with our private and public keys.
+
+Encryption: 
+1. c(333) = 3<sup>65537</sup> mod 50956313
+2. c(333) = 28544997
+
+Decryption:
+1. m(c) = 28544997<sup>7985</sup> mod 50956313
+2. m(c) = 3
 
 ### Authentication
 

@@ -142,23 +142,53 @@ Disallow: another/directory
 Open Systems Interconnection model is just a way to describe Network Architecture.
 It has 7 layers.
 
-Higher number more abstract.
+Higher number means more abstract layer. _in my opinion of course_
 
 ### 1. Physical Layer
 
 Basically responsible for transmitting data through some sort of a physical medium.
 Most likely cables.
 
+So if some engineer says something along the lines of "There's a problem on the first layer"
+You might expect some problems with cables etc.
+
 ### 2. Data Link Layer
 
-
+You can think of this layer when you hear _Switch, Ethernet, Bridge_. They transform the data to the physical layer.
+This handles errors correction from the first layer. 
 
 ### 3. Network Layer
 
+It's based on the IP protocol. In this layer all the data segments have specified source and destination address.
+Switches can also be on this layer in contrast to second-level switches (second level switches manage traffic within a LAN) 
+and this third layer switch manages traffic between local networks.
+
+This diagram that I made shows what I'm trying to say:
+![Three-layers-diagram](Assets/Networking1.png)
+
 ### 4. Transport Layer
+
+When you hear _UDP_ or _TCP_ then you know it's fourth layer's fault. 
+Those are the two protocols responsible for transporting data. TCP is connection-oriented protocol (That makes it so that data is transmitted in ordered lossless way) and UDP is connectionless (That gives it more speed).
+
+TCP is mostly used when data loss is very bad for the customer.
+UDP is mostly used when speed is needed. 
 
 ### 5. Session Layer
 
+You can associate it with NFS and RPC. Basically when you open `google.com` your PC starts a session with google's server. This session terminates when you leave this website/log out of it/close your browser. To successfully start a session you need to have IP address, know IP address of the server and number and type of a port.  
+
 ### 6. Presentation Layer
 
+It's some sort of a way of showing the user some data not necessarily the same as shown.
+Good analogy would be HTML. As a programmer you're writing code that is later interpreted by a browser.
+That way you can show someone a beautiful website even when he does not understand code.
+
+_It's just a **Presentation** layer_
+
+You can think of it when you hear _MP3, JPG, ASCII_
+
+
 ### 7. Application Layer
+
+It can be a browser. It can be a mail client. It's just a layer for all the applications that are helping people interact with stuff.

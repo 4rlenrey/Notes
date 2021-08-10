@@ -1,3 +1,5 @@
+<!-- {% raw %} -->
+
 # This repository contains 4rlenrey's notes
 
 1. [List of available notes](#list-of-available-notes)
@@ -39,3 +41,5 @@ For now I can only recommend a few books that I've read, those being:
 - "The C++ Programming Language, 4th Edition" ~ Bjarne Stroustrup
 - "Computer Security: Principles and Practice (4th Edition)" ~ William Stallings and Lawrie Brown
 - Everything from here: https://goalkicker.com/
+
+<!-- {% endraw %} -->

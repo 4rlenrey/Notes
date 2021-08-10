@@ -1,3 +1,5 @@
+<!-- {% raw %} -->
+
 # C++11 Notes 
 
 Made by 4rlenrey
@@ -1133,4 +1135,5 @@ You can now do:
 Cat mrm;
 mrm.age = 3;
 ```
+<!-- {% endraw %} -->
 

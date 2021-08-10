@@ -1,3 +1,5 @@
+<!-- {% raw %} -->
+
 # Big title for a new note
 
 <!-- TOC -->
@@ -18,5 +20,4 @@ Content here
 
 Content here
 
-
-
+<!-- {% endraw %} -->

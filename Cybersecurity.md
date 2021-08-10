@@ -1,3 +1,4 @@
+<!-- {% raw %} -->
 
 # Cybersecurity
 
@@ -311,5 +312,6 @@ Decryption:
 Authentication in general has a lot of pluses and a bit of minuses.
 It takes care of accountability, confidentiality and integrity. The minus might be that it makes it harder to access your data.
 
+<!-- {% endraw %} -->
 
 

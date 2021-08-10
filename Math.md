@@ -1,3 +1,4 @@
+<!-- {% raw %} -->
 
 # Math
 
@@ -150,3 +151,4 @@ long rlen_pow(long base, int exponent, int modulus)
 }
 ```
 
+<!-- {% endraw %} -->

@@ -1,3 +1,5 @@
+<!-- {% raw %} -->
+
 # Networking and stuff
 
 <!-- TOC -->
@@ -206,3 +208,5 @@ You can think of it when you hear _MP3, JPG, ASCII_
 - Seventh layer
 
 It can be a browser. It can be a mail client. It's just a layer for all the applications that are helping people interact with stuff.
+
+<!-- {% endraw %} -->

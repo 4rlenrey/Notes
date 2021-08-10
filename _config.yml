@@ -1,4 +1,2 @@
 theme: jekyll-theme-hacker
-
-exclude:
-  - node_modules
+markdown: GFM

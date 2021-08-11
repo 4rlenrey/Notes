@@ -191,5 +191,50 @@ for(int i = 0; i < 3; i ++) //there are three rows
 
 You spin me right round! round round! Like a rocket baby right round! round round! 
 
-<!-- {% endraw %} -->
+We want to make this `matrix[3][4]`:
+```
+[7][8][9][9]
+[1][1][2][3]
+[6][5][4][3]
+```
+Look like this:
+```
+[9][3][3]
+[9][2][4]
+[8][1][5]
+[7][1][6]
+```
+The algorithm for that is easy.
 
+This is my simple implementation of it
+```cpp
+int matrix[3][4] = {{7,8,9,9},{1,1,2,3},{6,5,4,3}}; //previous matrix
+
+int new_matrix[4][3]; //rotated matrix
+
+for(int j = 3; j >= 0; j--) //go through all the columns from right to left
+    for(int i = 0; i < 3; i++) //from top to bottom
+    {
+        new_matrix[3-j][i] = matrix[i][j]; 
+    }
+
+//printing out the array
+for(int i = 0; i < 4; i++)
+{
+	std::cout << "\n";
+	for(int j = 0; j < 3; j++)
+	{
+		std::cout << new_matrix[i][j] << " ";
+	}
+}
+```
+The output should be:
+```
+9 3 3 
+9 2 4 
+8 1 5 
+7 1 6
+```
+And that's right :).
+
+<!-- {% endraw %} -->

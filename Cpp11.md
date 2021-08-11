@@ -31,6 +31,7 @@ Made by 4rlenrey
 		- [Declaration](#declaration)
 		- [Overloading](#overloading)
 		- [Templates](#templates)
+		- [Multithreading](#multithreading)
 	- [STL containers](#stl-containers)
 		- [Vector](#vector)
 		- [Stack](#stack)
@@ -739,6 +740,57 @@ The output is:
 tttttt
 ```
 Again, pretty cool huh?
+
+### Multithreading
+
+In C++ you can use `std::thread`.
+It's really cool!
+
+To do that you need to first include it and then you are able to use them.
+This is the example usage:
+```cpp
+#include <thread>
+void do_something(int parameter, int another_one)
+{
+    int idk_what_to_do_here = parameter + another_one;
+}
+
+int main()
+{
+    //declaration
+    //type name(callable, args)
+    std::thread th(do_something, 3, 5);
+    std::thread th2(do_something, 7, 8);
+
+    //wait for the first one to finish
+    th.join();
+    //wait for the second one to finish
+    th2.join();
+}
+```
+The callable can be
+ - Function pointer
+ - Lambda expression
+ - Function object
+
+You can have a array of threads too
+```cpp
+std::thread threads[threads_count];
+
+for (int i = 0; i < threads_count; i++)
+{
+	threads[i] = std::thread(callable, some_args);
+}
+for (int i = 0; i < threads_count; i++)
+{
+	threads[i].join();
+}
+```
+
+Remember to compile it that way when doing it on linux:
+```sh
+g++ source.cpp -std=c++11 -pthread
+```
 
 ## STL containers
 ---

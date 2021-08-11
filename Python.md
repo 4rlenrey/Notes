@@ -10,6 +10,12 @@
 		- [Syntax](#syntax)
 		- [Comments](#comments)
 	- [Variables](#variables)
+		- [Usage](#usage)
+		- [Assigning multiple values](#assigning-multiple-values)
+		- [Data types](#data-types)
+	- [Statements and flow control](#statements-and-flow-control)
+		- [Conditional statements](#conditional-statements)
+		- [Loops](#loops)
 
 <!-- /TOC -->
 
@@ -50,6 +56,7 @@ Basically to print stuff we just need to use a print command:
 ```py
 print(stuff_to_print)
 ```
+And if we wanted to get some input for the command line we can use `input()`
 
 ### Syntax
 
@@ -114,7 +121,9 @@ print("something")
 
 Because it's a dynamically typed language you don't have to specify the type of the variable you're using.
 
-For example let's assign a value of `3` to a variable `x`
+### Usage
+
+Let's assign a value of `3` to a variable `x`
 ```py
 x = 3
 ```
@@ -133,6 +142,130 @@ And the output is:
 This is a string
 ```
 Like I said, it's all easy at the start.
+
+Also It might be worth noting:
+_Python does not care if you use single or double quotes_
+
+So this:
+```py
+x = "Some text"
+```
+Is the same as this:
+```py
+x = 'Some text'
+```
+Sometimes you might want to specify what type are you passing into a variable. 
+It looks like this:
+```py
+x = int(3) #this is going to be an integer
+x = str(3) #this is going to be a string
+```
+You can also check what type is this variable currently using:
+```py
+x = "Something to make it look professional"
+print(type)
+```
+It would output:
+```
+<class 'str'>
+```
+So we know it's a string.
+
+### Assigning multiple values
+
+That's what some languages are missing
+
+Look how cool it is:
+```py
+a, b = ["a", "b"]
+print(a, b)
+
+c = d = 5
+print(c, d)
+
+e, f = 5, 7
+print(e, f)
+```
+And the output should be:
+```
+a b
+5 5
+5 7
+```
+
+### Data types
+
+Python gives you those basic datatypes:
+
+| Type | What even is it | 
+| --- | --- |
+| int | number |
+| float | floating point number |
+| str | chain of characters (text) | 
+| bool | boolean (true or false) | 
+
+Datatypes in python aren't as important as in c++ in my opinion.
+
+## Statements and flow control
+
+In python like in almost any other language you have a possibility to control flow.
+
+### Conditional statements
+
+Similarly to c++ we have comparative operators:
+
+| Operator | Definition           | Example | Outcome |
+| -------- | -------------------- | ------- | ------- |
+| x == y   | x equal y            | 3 == 5  | false   |
+| x != y   | x not equal y        | 3 != 5  | true    |
+| x < y    | x less than y        | 3 < 5   | true    |
+| x > y    | x more than y        | 3 > 5   | false   |
+| x <= y   | x less or equal to y | 3 <= 5  | true    |
+| x >= y   | x more or equal to y | 3 >= 5  | false   |
+
+So we can use them in our conditional statements.
+
+The most common one might be `if`.
+
+you can use it lke this:
+```py
+if condition:
+	do_something
+```
+
+And here's some example:
+```py
+if x < y:
+	print("x is smaller than y")
+```
+
+You can also use *`or`* and *`and`* statements
+
+Example of using *`and`*:
+```py
+if x < y and x > 0:
+	print("x is positive and smaller than y") 
+```
+Example of using *`or`*:
+```py
+if x < y or x < z:
+	print("x is smaller than y or z")
+```
+There's also possibility of using such things as *`elif`* and *`else`*
+
+Example:
+```py
+if x < y:
+	print("x is smaller than y")
+elif x < z:
+	print("x is smaller than z")
+else:
+	print("x is bigger than both y and z")
+```
+
+`elif` is basically working just like else if.
+
+### Loops
 
 
 <!-- {% endraw %} -->

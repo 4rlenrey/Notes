@@ -13,6 +13,7 @@
 
 * [Cybersecurity](Cybersecurity.md)
 * [C++11](Cpp11.md)
+* [Python](Python.md)
 * [Algorithms](Algorithms.md)
 * [Data Structures](Data-Structures.md)
 * [Math](Math.md)
@@ -27,6 +28,8 @@ Do not use it if you want to get good by reading it! I am pretty sure that skill
 ---
 
 This is a digital version of my notes. I've made them based on a bit of books, articles and videos. Every single word in here is written by me. I'm doing it to be able to have a solid copy of my learning mindset for when I'm not gonna be able to remember something from here. (Also I had some internet issues and had access only to some programming books and got a bit bored) For now you can't really contribute to this but if you want to point out some misspelling/grammar issues feel free to contact me.
+
+Sadly I started making those notes in september 2021. That means that ~2 years of learning are not here. (I'll try to make up for it tho)
 
 ## How to reach the creator?
 ---

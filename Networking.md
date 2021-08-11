@@ -119,7 +119,27 @@ Browser will get rid of those `<h1>` and `<div>` tags and display it in a specif
 
 ### URL
 
-(uniform resource location)
+Uniform Resource Locator is a address for some resource on the web.
+URL's mostly reference web pages but they can also be used for ftp,  telnet, mailto and many more.
+
+These are some URL examples:
+
+`ftp://user:password@10.10.10.10:21/Documents`
+`http://www.example.com/index.html`
+
+Basically URL is made out of some segments. This is how it looks:
+
+`Scheme[//authority]path[?query][#fragment]`
+
+And that extended looks like this:
+
+`Scheme://Domain_Name:Port/Path?query#fragment`
+
+So the full example would be:
+
+`http://www.example.com:80/path/file.html?key=value#fragment`
+
+
 
 ## IETF
 

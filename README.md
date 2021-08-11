@@ -37,7 +37,7 @@ The simplest and easiest way of contacting me is by my contact email 4rlenrey@gm
 ## Recommended books
 --- 
 For now I can only recommend a few books that I've read, those being:
-- "C++ Beginner's guide" ~ Alex Allain
+- "Jumping into C++" ~ Alex Allain
 - "The C++ Programming Language, 4th Edition" ~ Bjarne Stroustrup
 - "Computer Security: Principles and Practice (4th Edition)" ~ William Stallings and Lawrie Brown
 - Everything from here: https://goalkicker.com/

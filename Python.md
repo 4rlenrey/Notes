@@ -263,9 +263,47 @@ else:
 	print("x is bigger than both y and z")
 ```
 
-`elif` is basically working just like else if.
+`elif` is basically working just like `else if`.
 
 ### Loops
 
+There are two types of loops.
+
+While loop looks like this:
+```py
+while condition:
+	do_something
+```
+Usage of this thing might look like this:
+```py
+while x > 0:
+	print(x)
+	x = x - 1
+```
+The value of `x` will be decreasing until x is equal or smaller than 0.
+
+There's also a for loop:
+```py
+for x in some_range:
+	do_something
+```
+Here you can do something like this:
+```py
+animals = ["Cat","Dog","Wolf"]
+for animal in animals:
+	print(animal)
+```
+The output is going to look like:
+```
+Cat
+Dog
+Wolf
+```
+Also you can use python range (numbers from a specific range):
+```py
+#printing numbers from 0 to 10
+for i in range(0, 10):
+	print(i) 
+```
 
 <!-- {% endraw %} -->

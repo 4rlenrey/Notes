@@ -16,6 +16,15 @@
 	- [Statements and flow control](#statements-and-flow-control)
 		- [Conditional statements](#conditional-statements)
 		- [Loops](#loops)
+	- [Functions](#functions)
+		- [Basic functions](#basic-functions)
+		- [Special arguments](#special-arguments)
+		- [Lambda](#lambda)
+	- [Containers](#containers)
+		- [Lists](#lists)
+		- [Tuples](#tuples)
+		- [Sets](#sets)
+		- [Dictionaries](#dictionaries)
 
 <!-- /TOC -->
 
@@ -58,6 +67,19 @@ print(stuff_to_print)
 ```
 And if we wanted to get some input for the command line we can use `input()`
 
+You don't need to have a main function here (unlike in c++) but it's advised to do so.
+It's actually important because of the import problem.(I'll talk about it later)
+
+So this is how it should look like when you're declaring a main function
+```py
+#function declaration
+def main():
+    print("This is a main function lol")
+
+#This is working like "if this is the main file opened then invoke this main function"
+if __name__ == "__main__":
+    main()
+```
 ### Syntax
 
 Because Mr. Guido wanted to make this language readable Python is more about indentation than brackets, semicolons etc.
@@ -304,6 +326,257 @@ Also you can use python range (numbers from a specific range):
 #printing numbers from 0 to 10
 for i in range(0, 10):
 	print(i) 
+```
+## Functions
+
+Like in any other language, here you can declare your own functions.
+
+### Basic functions
+
+It looks like this:
+```py
+#definition
+def name(arg1, arg2):
+	do_something
+	return something
+#invoking 
+name(3, "test")
+```
+And now a simple example of using a function:
+```py 
+def add_5(x):
+	return x+5
+
+y = add_5(5)
+print(y)
+```
+
+the output is:
+```
+10
+```
+
+### Special arguments
+
+You can set default arguments like this:
+```py
+#Set y default's value to 5
+def add(x, y = 5):
+	return x + y
+print(add(5))
+print(add(5, 10))
+```
+Output:
+```
+10
+15
+```
+You can also use keyword arguments
+It works in a way so that you don't need to provide them in a specific order.
+You can just assign values to names.
+
+```py
+def divide(base, divider):
+	return base//divider
+x = divide(divider=5, base=10)
+print(x)
+```
+Output:
+```
+2
+```
+
+### Lambda
+
+Syntax for lambda function here is pretty easy.
+
+```py
+lambda arguments : what_to_return
+```
+
+This is my example of how you can use it:
+
+```py
+modpow = lambda x, y, z, : (x**y%z) 
+print(modpow(52, 21, 63))
+```
+output would be 
+```
+55
+```
+
+because **52<sup>21</sup>mod63 = 55**
+
+As you can see it's pleasant
+
+## Containers
+
+You can store something in them.
+Python provides a bit of default containers those being:
+
+You can check if a element is in the container using the **`in`** keyword.
+```py
+if 3 in numbers_container:
+	print("It's in there")
+```
+
+### Lists
+
+Similar to c++'s vector. Declaring it looks like this:
+```py
+name = [some_item, another_item] #filled on init
+another_one = [] #empty one
+```
+you can access it's elements like this (note that its indexes start at 0)
+```py
+x = name[index]
+```
+Example:
+```py
+x = [1, 5, 6, 3]
+print(x[1])
+```
+Output:
+```
+5
+```
+You can access the last item by doing 
+```
+x[-1] = some_value
+```
+And also you can access a range of items by doing
+```py
+print(x[start:end])
+```
+example:
+```py
+x = [1, 2, 3, 4, 5, 6]
+print(x[1:4])
+```
+Output:
+```
+[2, 3, 4]
+```
+Start or end of this range does not need to be specified.
+Example
+```py
+x = [1, 2, 3, 4, 5, 6]
+print(x[1:])
+```
+Output:
+```
+[2, 3, 4, 5, 6]
+```
+
+You can change values by accessing the items
+```py
+x = [1, 5, 6, 3]
+x[0] = 4
+#now it looks like [4. 5. 6. 3]
+```
+You can also add items using the **append** or **insert** keyword.
+The main difference between them is that **insert** lets you specify at which index this variable
+should be added at. **Append** tho lets you add this element at the end of this list.
+
+example:
+```py
+x = [3, 5, 5, "test"]
+x.append(0)
+print(x)
+x.insert(2, "something_at_index_2")
+print(x)
+```
+Output:
+```
+[3, 5, 5, 'test', 0]
+[3, 5, 'something_at_index_2', 5, 'test', 0]
+```
+
+If you need to delete elements from this container then you can use these methods:
+
+**remove(item)** - To delete specific item
+
+**pop()** - To delete item at the end of the list
+
+**pop(index)** - To delete item at this specific index
+
+**clear()** - To clear the whole list
+
+example:
+```py
+x = [1, 2, 3, 4, 5, 6]
+x.remove(1) 
+print(x)
+x.pop()
+print(x)
+x.pop(2)
+print(x)
+x.clear()
+print(x)
+```
+Output:
+```
+[2, 3, 4, 5, 6]
+[2, 3, 4, 5]
+[2, 3, 5]
+[]
+```
+
+### Tuples
+
+Those are like lists but once created they don't allow you to change anything
+
+This is a simple example of creating a tuple:
+```py
+x = (2, 3,) #Notice the comma the the end
+```
+Honestly I don't use them.
+
+### Sets
+
+Similar to list but don't allow duplicate items and you can't change any of those items.
+
+This is a simple example of creating a set:
+```py
+x = {2, 3}
+```
+Just like in list you add and remove items
+
+It's mostly used to check if an item occurs in it
+
+### Dictionaries
+
+Key-Value container.
+Declaration looks like this:
+```py
+x = {
+	"MyAge" : 3,
+	"MyEyes" : "Blue",
+	3 : False
+}
+```
+Let's try to print it:
+```py
+print(x)
+```
+Output:
+```
+{'MyAge': 3, 'MyEyes': 'Blue', 3: False}
+```
+Nice.
+
+We can access/change/delete it's items just like we did in lists but instead of indexes we access those items by key (this left thingy)
+
+For example let's print value of our previously added dict and then add a new one:
+```py
+print(x[3])
+x["SomeNewKey"] = 10
+print(x)
+```
+Output:
+```
+False
+{'MyAge': 3, 'MyEyes': 'Blue', 3: False, 'SomeNewKey': 10}
 ```
 
 <!-- {% endraw %} -->

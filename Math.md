@@ -13,6 +13,8 @@
 		- [Modular exponentiation](#modular-exponentiation)
 			- [Memory-efficient method](#memory-efficient-method)
 			- [Even more efficient method:](#even-more-efficient-method)
+	- [Mathematical logic](#mathematical-logic)
+		- [Logical sentences](#logical-sentences)
 
 <!-- /TOC -->
 
@@ -150,5 +152,36 @@ long rlen_pow(long base, int exponent, int modulus)
 	return result;
 }
 ```
+
+## Mathematical logic
+
+In here you basically worry about expressions that we can assign two possible values **`True`** and **`False`** also seen as **`1`** and **`0`** 
+
+True = 1
+
+False = 0
+
+### Logical sentences
+
+Let's consider these sentences:
+
+1. Sentence: "2 is an even number" 
+	- Value: 1 
+
+2. Sentence: "2 is an odd number" 
+	- Value: 0
+
+They're simple because we can easily assign these logical values to them.
+That's because they're built out of one logical statement.
+
+And now let's consider these:
+
+1. Sentence: "x is an even number when it's not odd" 
+	- Value: 1
+
+2. Sentence: "2 is an odd number and 3 is an odd number" 
+	- Value: 0
+
+It's harder to assign a binary value to it because it's built out of more than one logical statement.
 
 <!-- {% endraw %} -->

@@ -19,6 +19,7 @@
 		- [Linear Sieve](#linear-sieve)
 	- [Sorting](#sorting)
 		- [Bubble sort](#bubble-sort)
+		- [Selection sort](#selection-sort)
 	- [Prefix sum](#prefix-sum)
 
 <!-- /TOC -->
@@ -409,6 +410,32 @@ where `size` is the size of array and `array` is the array we want to sort
 Complexity:
  - worst case = **O(n*n)** 
  - avg case = **O(n log n)** 
+
+### Selection sort
+
+![Diagram](Assets/Algo2.png)
+
+Basically you are looking for the smallest number in here. After that you replace the starting number with it.
+
+This is my c++ implementation example:
+
+```cpp
+int smallest_index;
+for(int i = 0; i < size-1; i++)
+{
+    smallest_index = i;
+    for(int j = i+1; j < size; j++)
+    {
+        if(array[smallest_index] > array[j])
+            smallest_index = j; //get index of the smallest elements of unsorted part
+    }
+    int t = array[i]; //replace them
+    array[i] = array[smallest_index];
+    array[smallest_index] = t;
+}
+```
+
+Complexity: **O(n*n)** 
 
 ## Prefix sum
 Let's consider this example:

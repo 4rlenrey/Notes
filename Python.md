@@ -5,6 +5,12 @@
 <!-- TOC -->
 
 - [Python](#python)
+	- [Operators](#operators)
+		- [Arithmetic](#arithmetic)
+		- [Comparative](#comparative)
+		- [Assignment](#assignment)
+		- [Logical](#logical)
+		- [Membership](#membership)
 	- [Basics](#basics)
 		- [Getting started](#getting-started)
 		- [Syntax](#syntax)
@@ -25,8 +31,76 @@
 		- [Tuples](#tuples)
 		- [Sets](#sets)
 		- [Dictionaries](#dictionaries)
+	- [OOP](#oop)
+		- [Class and Object](#class-and-object)
+		- [Constructor](#constructor)
+		- [Methods](#methods)
 
 <!-- /TOC -->
+
+## Operators
+
+### Arithmetic
+
+| Operator | Definition                         | Example | Outcome |
+| -------- | ---------------------------------- | ------- | ------- |
+| x + y    | addition                           | 3 + 5   | 8       |
+| x - y    | subtraction                        | 3 - 5   | -2      |
+| x / y    | division                           | 5 / 2   | 2.5     |
+| x * y    | multiplication                     | 3 * 5   | 15      |
+| x % y    | modulo                             | 5 % 3   | 2       |
+| x ** y   | Exponentiation                     | 5 ** 3  | 125     |
+| x // y   | Floor division                     | 5 // 2  | 2       |
+| x & y    | bitwise AND                        | 5 & 3   | 1       |
+| ~x       | bitwise NOT                        | ~3      | -4      |
+| x \| y   | bitwise OR                         | 5 \| 3  | 7       |
+| x ^ y    | bitwise XOR                        | 5 ^ 3   | 6       |
+| x << y   | bitwise left shift                 | 5 << 3  | 40      |
+| x >> y   | bitwise right shift                | 5 >> 3  | 0       |
+
+### Comparative
+
+| Operator | Definition           | Example | Outcome |
+| -------- | -------------------- | ------- | ------- |
+| x == y   | x equal y            | 3 == 5  | false   |
+| x != y   | x not equal y        | 3 != 5  | true    |
+| x < y    | x less than y        | 3 < 5   | true    |
+| x > y    | x more than y        | 3 > 5   | false   |
+| x <= y   | x less or equal to y | 3 <= 5  | true    |
+| x >= y   | x more or equal to y | 3 >= 5  | false   |
+
+### Assignment
+
+| Operator | Definition             |
+| -------- | ---------------------- |
+| x = y    | x now has a value of y |
+| x += y   | x = x + y              |
+| x -= y   | x = x - y              |
+| x /= y   | x = x / y              |
+| x //= y  | x = x // y             |
+| x **= y  | x = x ** y             |
+| x *= y   | x = x * y              |
+| x ^= y   | x = x ^ y              |
+| x &= y   | x = x & y              |
+| x \|= y  | x = x \| y             |
+| x <<= y  | x = x << y             |
+| x >>= y  | x = x >> y             |
+| x %= y   | x = x % y              |
+
+### Logical
+
+| Operator | Example     |
+| -------- | ----------- |
+| not      | not(x < 4)  |
+| or       | x=2 or x=1  |
+| and      | x=1 and y=1 |
+
+### Membership
+
+| Operator | Example     | Description             |
+| -------- | ----------- | ----------------------- |
+| in       | x in y      | true if x is in y       |
+| is       | x is y      | true if x is equal to y |
 
 ## Basics
 ---
@@ -577,6 +651,97 @@ Output:
 ```
 False
 {'MyAge': 3, 'MyEyes': 'Blue', 3: False, 'SomeNewKey': 10}
+```
+
+## OOP
+
+Just like in c++ we have classes and objects.
+Class is like this metal form for making a cookie and object is a cookie.
+
+### Class and Object
+
+You can simply define a class like this:
+```py
+class Hooman:
+	name = "Default"
+```
+
+And now we can create a object x from a class **`Hooman`**
+
+```py
+x = Hooman()
+```
+
+We can now check and change it's attribute **`name`**
+
+```py
+print(x.name)
+x.name = "Paul"
+print(x.name)
+```
+
+The output should look like this:
+
+```
+Default
+Paul
+```
+
+It's cool.
+
+### Constructor
+
+Constructor is a method invoked on start.
+It can be used to take some initial values or something.
+
+It looks like this:
+
+```py
+class Hooman:
+	name = "Default"
+	def __init__(self, age): 	# Constructor 
+		self.age = age
+```
+
+And now when creating this object you'd have to provide this age variable:
+
+```py
+x = Hooman(4)
+print(x.age)
+```
+
+And the output should be 
+
+```
+4
+```
+
+### Methods
+
+Methods are essentially just some functions inside a class.
+
+```py
+class Hooman:
+	name = "Default"
+	
+	def __init__(self, age): 	# Constructor
+		self.age = age
+
+	def speak(self):			# Method 
+		print(f"My name is {self.name} and my age is {self.age}")
+```
+And now let's create an object and test this method:
+
+```py
+x = Hooman(3)
+x.name = "Paul"
+x.speak()
+```
+
+This is the output:
+
+```
+My name is Paul and my age is 3
 ```
 
 <!-- {% endraw %} -->

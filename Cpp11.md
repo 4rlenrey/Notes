@@ -56,7 +56,7 @@ Made by 4rlenrey
 | Operator | Definition                         | Example | Outcome |
 | -------- | ---------------------------------- | ------- | ------- |
 | x + y    | addition                           | 3 + 5   | 8       |
-| x - y    | subtraction                       | 3 - 5   | -2      |
+| x - y    | subtraction                        | 3 - 5   | -2      |
 | x / y    | division                           | 4 / 2   | 2       |
 | x * y    | multiplication                     | 3 * 5   | 15      |
 | x % y    | modulo                             | 5 % 3   | 2       |
@@ -101,7 +101,7 @@ Made by 4rlenrey
 | Operator | Definition |
 | -------- | ---------- |
 | !        | not        |
-| \|       | or         |
+| ||       | or         |
 | &&       | and        |
 
 ### Access

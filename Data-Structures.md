@@ -11,6 +11,7 @@
 		- [Multiplying each element](#multiplying-each-element)
 		- [Adding two matrices](#adding-two-matrices)
 		- [Rotating](#rotating)
+	- [Binary tree](#binary-tree)
 
 <!-- /TOC -->
 
@@ -236,5 +237,67 @@ The output should be:
 7 1 6
 ```
 And that's right :).
+
+## Binary tree
+
+This is what a binary tree looks like:
+
+![Diagram](Assets/Data4.png)
+
+To implement it in C++ we would have to first define a structure.
+
+```cpp
+struct rlen_node
+{
+    int key;
+    rlen_node *left;
+    rlen_node *right;
+};
+```
+It contains only an integer **key** variable and two pointers.
+
+Those two pointers are there to point to newly added leaves (Or to NULL if there's nothing).
+
+Now we can implement functions to add and delete leaves.
+
+```cpp
+void delete_tree(rlen_node *leaf)
+{
+    if (leaf != NULL)
+    {
+        delete_tree(leaf->left); // recursion to get rid of all the leaves on the left
+        delete_tree(leaf->right);  // on the right too
+        delete leaf;
+    }
+}
+
+void add_node(int key, rlen_node *leaf)
+{
+    if (key < leaf->key) // if smaller go to the left
+    {
+        if (leaf->left == NULL)
+        {
+            leaf->left = new rlen_node;
+            leaf->left->key = key;
+            leaf->left->left = NULL;
+            leaf->left->right = NULL;
+        }
+        else
+            add_node(key, leaf->left);
+    }
+    else // otherwise to the right
+    {
+        if (leaf->right == NULL)
+        {
+            leaf->right = new Rlen_node;
+            leaf->right->key = key;
+            leaf->right->left = NULL;
+            leaf->right->right = NULL;
+        }
+        else
+            add_node(key, leaf->right);
+    }
+}
+```
 
 <!-- {% endraw %} -->

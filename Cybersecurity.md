@@ -7,6 +7,8 @@
 - [Cybersecurity](#cybersecurity)
 	- [Solid base and terminology](#solid-base-and-terminology)
 		- [Terminology](#terminology)
+	- [Authentication](#authentication)
+		- [Password](#password)
 
 <!-- /TOC -->
 
@@ -82,8 +84,48 @@ There's another way of separating attacks into two categories;
 
 - **Spoofing** - Impersonating another host
 
+## Authentication
 
+There are four main types of authentication.
 
+1. Password type - It's just some sort of a data known only to a desired person.
+2. Entry card type - It's something that a person can have (For example Yubikey).
+3. Fingerprint type - Some biological identification of a person
+4. Voice recognition type - It's something that only one person can do
+
+Basically you can use those things to check if you're actually giving the right person some important data.
+When you're using one of them it's called single-factor authentication and if you're using more than one, it's multi-factor authentication.
+
+### Password
+
+Password-type authentication is pretty good but have some problems (Like any other). It's still mostly picked option tho.
+
+Those are the main attacks that it might be vulnerable to:
+
+- Popular passwords attack 
+	- An attacker can just find some online list of commonly used passwords and try every single one of them. The most simple way of preventing this types of attacks is to use randomly generated passwords.
+- Brute-force attack
+	- An attacker can try every single password combination. It's possible because of power of modern computers. There's also a simple way of preventing it. You can just limit the number of password requests (For example: 10 unsuccessful for a day).
+- Personalized brute-force attack
+	- It's similar to bruteforce but an attacker instead of generating random junk tries to generate personalized password 
+	(For example: knowing that the favorite series of a victim is "Friends" attacker can force the algorithm to include the word "Friends" in those combinations 
+	/ Or knowing that in victim's company passwords have to have from 6 to 8 letters and have to include some special characters in them. 
+	Attacker can improve his brute-force algorithm for that specific person) To fix that you can enforce people to use different sizes and different types of passwords.
+- Dictionary attack
+	- After stealing a file with password hashes an attacker can try to get the password
+	by comparing hashes of lots of different passwords from a password dictionary to it's hash. 
+- Multiple-use attack
+	- Lot's of people use the same password on a lot of different sites. It's not really good because after a leak of passwords of one site, an attacker can just try those leaked passwords and might succeed to log in.
+	Attacker can also get people to register on his site to get their passwords and to try to use them anywhere else.
+- Capturing attack
+	- When the password is being sent while unencrypted through some public wifi (some http sites still do that) it might get caught by someone monitoring the traffic. The main solution is to encrypt those passwords
+- Physical attack
+	- Someone can just steal your unlocked laptop when you're somewhere else.
+	The simplest way to fix this problem is to have some auto-locking thing on your laptop that turns on after a bit of inactivity.
+- Human attack
+	- Almost all of the above could be here but I'd like to write about another problem.
+	Some people share passwords. Another people write their passwords on the fridge.
+	It's like asking for trouble. I'd recommend to try to not let anyone see your passwords.
 
 <!-- {% endraw %} -->
 

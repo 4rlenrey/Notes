@@ -9,6 +9,7 @@
 		- [Terminology](#terminology)
 	- [Authentication](#authentication)
 		- [Password](#password)
+			- [Hashing](#hashing)
 
 <!-- /TOC -->
 
@@ -102,30 +103,48 @@ Password-type authentication is pretty good but have some problems (Like any oth
 
 Those are the main attacks that it might be vulnerable to:
 
-- Popular passwords attack 
+- **Popular passwords attack** 
 	- An attacker can just find some online list of commonly used passwords and try every single one of them. The most simple way of preventing this types of attacks is to use randomly generated passwords.
-- Brute-force attack
+- **Brute-force attack**
 	- An attacker can try every single password combination. It's possible because of power of modern computers. There's also a simple way of preventing it. You can just limit the number of password requests (For example: 10 unsuccessful for a day).
-- Personalized brute-force attack
+- **Personalized brute-force attack**
 	- It's similar to bruteforce but an attacker instead of generating random junk tries to generate personalized password 
 	(For example: knowing that the favorite series of a victim is "Friends" attacker can force the algorithm to include the word "Friends" in those combinations 
 	/ Or knowing that in victim's company passwords have to have from 6 to 8 letters and have to include some special characters in them. 
 	Attacker can improve his brute-force algorithm for that specific person) To fix that you can enforce people to use different sizes and different types of passwords.
-- Dictionary attack
+- **Dictionary attack**
 	- After stealing a file with password hashes an attacker can try to get the password
 	by comparing hashes of lots of different passwords from a password dictionary to it's hash. 
-- Multiple-use attack
+- **Multiple-use attack**
 	- Lot's of people use the same password on a lot of different sites. It's not really good because after a leak of passwords of one site, an attacker can just try those leaked passwords and might succeed to log in.
 	Attacker can also get people to register on his site to get their passwords and to try to use them anywhere else.
-- Capturing attack
+- **Capturing attack**
 	- When the password is being sent while unencrypted through some public wifi (some http sites still do that) it might get caught by someone monitoring the traffic. The main solution is to encrypt those passwords
-- Physical attack
+- **Physical attack**
 	- Someone can just steal your unlocked laptop when you're somewhere else.
 	The simplest way to fix this problem is to have some auto-locking thing on your laptop that turns on after a bit of inactivity.
-- Human attack
+- **Human attack**
 	- Almost all of the above could be here but I'd like to write about another problem.
 	Some people share passwords. Another people write their passwords on the fridge.
 	It's like asking for trouble. I'd recommend to try to not let anyone see your passwords.
+
+#### Hashing
+
+Because hashing is irreversible you can use it to store passwords on a device.
+When someone would be able to get those password file he might be surprised that there's no possibility of getting passwords out of it.
+
+Hashing basically looks like this:
+
+![Diagram](Assets/Crypto4.png)
+
+There's no possibility of getting plaintext from hashed text.
+The only thing you can do is comparing hashes. If they match then you can guess what was the plaintext.
+
+That seems like a bit of a problem. 
+
+It's a problem because if the attacker sees that some person has the same hash of password as another person, he can try to get password of this second person and this might reveal password of the first one.
+
+That's when **Salting** comes in. salt is just a bit of random bits added to password when hashed. That way it changes this hash to be different.
 
 <!-- {% endraw %} -->
 

@@ -13,6 +13,7 @@
 		- [Block cipher](#block-cipher)
 	- [Asymmetric encryption](#asymmetric-encryption)
 		- [RSA](#rsa)
+	- [Hashing](#hashing)
 
 <!-- /TOC -->
 
@@ -247,5 +248,49 @@ Encryption:
 Decryption:
 1. m(c) = 28544997<sup>7985</sup> mod 50956313
 2. m(c) = 3
+
+## Hashing
+
+Hash functions are irreversible.
+
+It looks similar to symmetric encryption:
+
+![Diagram](Assets/Crypto4.png)
+
+But the main difference is that there's no decryption. You can't get the plaintext from hashed text.
+Every single string has it's own hash text. *(There's a thing called hash collision that ill talk about later tho)*
+
+Good way to show it is by using a simple example:
+
+This is my plaintext:
+```
+4rlenrey
+```
+
+Using the `SHA256` hash function I'll get this hash:
+```
+a569a267b101c42dea47b85f8c0fab8e040e8372141cd51c5931b1912da1c1d3
+```
+
+In normal encryption changing one character in plaintext would not result in changing whole ciphertext. Let's see what happens when I change one of characters in my plaintext.
+
+Updated plaintext:
+
+```
+3rlenrey
+```
+
+Hash of updated plaintext:
+```
+7199246982e45b0199bc5739202e8b7649d9333de2c1bddd1d52615ea6732af4
+```
+
+Let's now compare those two hashes:
+```
+a569a267b101c42dea47b85f8c0fab8e040e8372141cd51c5931b1912da1c1d3
+7199246982e45b0199bc5739202e8b7649d9333de2c1bddd1d52615ea6732af4
+```
+
+They're so different!
 
 <!-- {% endraw %} -->

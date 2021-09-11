@@ -22,6 +22,7 @@
 		- [Session Layer](#session-layer)
 		- [Presentation Layer](#presentation-layer)
 		- [Application Layer](#application-layer)
+	- [Internet Protocol Suite](#internet-protocol-suite)
 
 <!-- /TOC -->
 
@@ -100,7 +101,7 @@ It specifies the address which the request is made by.
 
 #### HTTPS
 
-Https is an encrypted version of http. So if anyone in the caffee will try to steal your passwords by looking at what is going through the router then he cannot get those information because it's encrypted.
+Https is an encrypted version of http. So if anyone in the cafe will try to steal your passwords by looking at what is going through the router then he cannot get those information because it's encrypted.
 
 So when you visit `https://www.google.com/` this `https` is saying that your browser expects encrypted data and it demands it.
 
@@ -228,5 +229,30 @@ You can think of it when you hear _MP3, JPG, ASCII_
 - Seventh layer
 
 It can be a browser. It can be a mail client. It's just a layer for all the applications that are helping people interact with stuff.
+
+## Internet Protocol Suite
+
+Often referred to as TCP/IP model. It consists of 4 layers that contain different communication protocols. These protocols are used in the Internet. 
+
+These layers *(with some example protocols)* are:
+
+1. **Link layer**
+	- ARP
+	- MAC
+2. **Internet layer**
+	- IP
+3. **Transport layer**
+	- TCP
+	- UDP
+4. **Application layer**
+	- HTTP
+	- HTTPS
+	- TLS/SSL
+	- SSH
+	- DHCP
+	- FTP
+	- DNS
+
+It's older than OSI model.
 
 <!-- {% endraw %} -->

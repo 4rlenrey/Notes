@@ -7,7 +7,7 @@
 	- ## [**C++11**](Cpp11.md)
 	- ## [**Python**](Python.md)
 - ## [**Computer**](Computer.md)
-	- ## [**Linux**](Linux.md)
+	<!-- - ## [**Linux**](Linux.md) -->
 - ## [**Math**](Math.md)
 	- ## [**Algorithms**](Algorithms.md)
 	- ## [**Data Structures**](Data-Structures.md)

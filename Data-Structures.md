@@ -11,6 +11,7 @@
 		- [Multiplying each element](#multiplying-each-element)
 		- [Adding two matrices](#adding-two-matrices)
 		- [Rotating](#rotating)
+	- [Linked list](#linked-list)
 	- [Binary tree](#binary-tree)
 
 <!-- /TOC -->
@@ -237,6 +238,61 @@ The output should be:
 7 1 6
 ```
 And that's right :).
+
+## Linked list
+
+![Diagram](Assets/Data5.png)
+
+Like the name suggests it's a data structure with dynamic memory usage.
+You can easily add and remove items from it. That's because every node has a pointer to the next node (Or to NULL). 
+
+Unlike in traditional arrays here you don't assign any type of indexes.
+If you want to access it's tenth or seventh element you need to manually iterate through seven elements. That's a cost for being smart :(
+
+To implement it we need to implement a simple class for a single node.
+
+```cpp
+class rlen_node{
+public:
+	rlen_node(int data){this->data = data;} //constructor to add data when creating
+	rlen_node* next;
+	int data;
+};
+```
+Now we can try to implement some simple functions to add/remove nodes.
+
+```cpp
+void delete_list(rlen_node* head)
+{
+	while(head->next != NULL)
+	{
+		delete_front(head);
+	}
+	delete head;
+}
+void add_node(rlen_node* head, int data)
+{
+	while(head->next != NULL) //go until found tail (node not connected to anything)
+		head = head->next;
+	head->next = new rlen_node(data);	
+}
+
+void delete_front(rlen_node* head)
+{
+	while(head->next->next != NULL)
+	{
+		head = head->next;
+	}
+	if(head->next == NULL)
+		delete head;
+	else 
+	{
+		delete head->next;
+		head->next = NULL;
+	}
+}
+```
+
 
 ## Binary tree
 

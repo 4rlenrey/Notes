@@ -87,6 +87,7 @@ int main() {
 ```
 
 And use a *gcc* compiler to convert it to this assembly code.
+(GCC Does not actually convert your c code to assembly by default. It compiles it to machine code. To do the conversion you can use the *`-S`* flag when compiling,)
 
 It looks a lot more readable for me. Especially because I know C.
 
@@ -96,7 +97,7 @@ When you're creating something you're almost constantly changing something.
 This process of tinkering can lead to all sorts of problems and often it can break a whole app.
 With version control software you can easily commit versions of your code and when something breaks you can return to the older version.
 
-Here I'm going to be covering the tool named `*git*` and created by the famous Linus Torvalds and Junio C Hamano. It's used almost everywhere. I am using it while making these notes.
+Here I'm going to be covering the tool named *`git`* and created by the famous Linus Torvalds and Junio C Hamano. It's used almost everywhere. I am using it while making these notes.
 
 Because I prefer using cli version of git I'm going to be covering it here.
 

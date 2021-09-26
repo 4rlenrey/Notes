@@ -232,7 +232,7 @@ It can be a browser. It can be a mail client. It's just a layer for all the appl
 
 ## Internet Protocol Suite
 
-Often referred to as TCP/IP model. It consists of 4 layers that contain different communication protocols. These protocols are used in the Internet. 
+Often referred to as TCP/IP. It consists of 4 conceptual layers that contain different communication protocols. These protocols are used in the Internet. 
 
 These layers *(with some example protocols)* are:
 
@@ -252,7 +252,5 @@ These layers *(with some example protocols)* are:
 	- DHCP
 	- FTP
 	- DNS
-
-It's older than OSI model.
 
 <!-- {% endraw %} -->

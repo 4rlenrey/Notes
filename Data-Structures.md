@@ -8,9 +8,6 @@
 	- [Stack](#stack)
 	- [Queue](#queue)
 	- [Matrix](#matrix)
-		- [Multiplying each element](#multiplying-each-element)
-		- [Adding two matrices](#adding-two-matrices)
-		- [Rotating](#rotating)
 	- [Linked list](#linked-list)
 	- [Binary tree](#binary-tree)
 
@@ -153,7 +150,7 @@ Those are some examples of matrix.
 
 ![Diagram](Assets/Data3.png)
 
-### Multiplying each element
+Multiplying each element:
 
 Let's consider this matrix `int t[3][4]`:
 ```
@@ -168,7 +165,7 @@ for(int i = 0; i < 3; i ++) //there are three rows
         t[i][j] = t[i][j]*6;
 ```
 
-### Adding two matrices
+Adding two matrices:
 
 Let's consider this two matrices `int t[3][4]` and `int w[3][4]`:
 ```
@@ -189,7 +186,7 @@ for(int i = 0; i < 3; i ++) //there are three rows
         c[i][j] = w[i][j] + t[i][j];
 ```
 
-### Rotating
+Rotating:
 
 You spin me right round! round round! Like a rocket baby right round! round round! 
 
@@ -254,7 +251,7 @@ To implement it we need to implement a simple class for a single node.
 ```cpp
 class rlen_node{
 public:
-	rlen_node(int data){this->data = data;} //constructor to add data when creating
+	rlen_node(int data){this->data = data; this->next = NULL;} //constructor
 	rlen_node* next;
 	int data;
 };
@@ -262,14 +259,6 @@ public:
 Now we can try to implement some simple functions to add/remove nodes.
 
 ```cpp
-void delete_list(rlen_node* head)
-{
-	while(head->next != NULL)
-	{
-		delete_front(head);
-	}
-	delete head;
-}
 void add_node(rlen_node* head, int data)
 {
 	while(head->next != NULL) //go until found tail (node not connected to anything)
@@ -280,9 +269,8 @@ void add_node(rlen_node* head, int data)
 void delete_front(rlen_node* head)
 {
 	while(head->next->next != NULL)
-	{
 		head = head->next;
-	}
+
 	if(head->next == NULL)
 		delete head;
 	else 
@@ -291,7 +279,85 @@ void delete_front(rlen_node* head)
 		head->next = NULL;
 	}
 }
+void delete_at_index(rlen_node* head, int index)
+{
+	int depth = 0;
+	while(head->next != NULL && depth < index-1)
+	{
+		depth++;
+		head = head->next;
+	}
+	if(depth == index-1)
+	{
+		if(head->next->next != NULL)
+		{	
+			rlen_node* x = head->next->next;
+			delete head->next;
+			head->next = x;
+		}
+		else
+		{
+			delete head->next;
+			head->next = NULL;
+		}
+	}	
+	else
+		std::cerr << "Could not find any node at that index\n";
+}
+
+void delete_list(rlen_node* head)
+{
+	while(head->next != NULL)
+	{
+		delete_front(head);
+	}
+	delete head;
+}
+
+void print_list(rlen_node* head)
+{
+	std::cout << head->data << " -> ";
+	while(head->next != NULL) //go until found tail (node not connected to anything)
+	{
+		head = head->next; 
+		std::cout << head->data << " -> ";
+	}	
+	std::cout << "NULL\n";
+}
 ```
+With this driver code:
+```cpp
+int main()
+{
+	rlen_node *head = new rlen_node(1);
+	print_list(head);
+	add_node(head, 2);
+	add_node(head, 3);
+	add_node(head, 4);
+	add_node(head, 5);
+	print_list(head);
+	delete_front(head);
+	delete_front(head);
+	print_list(head);
+	add_node(head, 4);
+	add_node(head, 5);
+	print_list(head);
+	delete_at_index(head, 3);
+	print_list(head);
+	delete_list(head);
+}
+```
+The output is:
+
+```sh
+1 -> NULL
+1 -> 2 -> 3 -> 4 -> 5 -> NULL
+1 -> 2 -> 3 -> NULL
+1 -> 2 -> 3 -> 4 -> 5 -> NULL
+1 -> 2 -> 3 -> 5 -> NULL
+```
+
+Which is good.
 
 
 ## Binary tree

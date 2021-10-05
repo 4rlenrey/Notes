@@ -303,7 +303,7 @@ Variations can have specified size.
 
 ### Combinations
 
-A combination is a k-element subset of a n-element set.
+A combination is a k-element subset of a n-element set. (Note that {1,2} is the same subset as {2, 1})
 
 If you'd have this set:
 
@@ -311,7 +311,7 @@ A = {A, B, C, D} _(n = 4)_
 
 All the combinations would be: 
 
-One element:  $4 \choose 1$ 
+One element: _(k = 1)_
 - {A}, {B}, {C}, {D}
 
 Two elements: _(k = 2)_ 
@@ -323,6 +323,9 @@ Three elements: _(k = 3)_
 Four elements: _(k = 4)_
 - {ABCD}
 
+The formula for counting how many combinations there are:
+
+n!/k!*(n-k)!
 
 
 <!-- {% endraw %} -->

@@ -21,6 +21,7 @@
 		- [Variations](#variations)
 			- [With repetitions:](#with-repetitions)
 			- [Without repetitions:](#without-repetitions)
+		- [Combinations](#combinations)
 
 <!-- /TOC -->
 
@@ -294,5 +295,34 @@ n - power of A
 k - variation size
 
 x = (n!)/(n-k)!
+
+So permutations are different from variations because permutations are the same size as set the're made out of.
+
+Variations can have specified size.
+
+
+### Combinations
+
+A combination is a k-element subset of a n-element set.
+
+If you'd have this set:
+
+A = {A, B, C, D} _(n = 4)_
+
+All the combinations would be: 
+
+One element:  $4 \choose 1$ 
+- {A}, {B}, {C}, {D}
+
+Two elements: _(k = 2)_ 
+- {AB}, {AC}, {AD}, {BC}, {BD}, {CD}
+
+Three elements: _(k = 3)_
+- {ABC}, {ABD}, {ABC}, {BCD}
+
+Four elements: _(k = 4)_
+- {ABCD}
+
+
 
 <!-- {% endraw %} -->

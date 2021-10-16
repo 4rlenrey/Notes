@@ -5,13 +5,13 @@
 <!-- TOC -->
 
 - [Data structures](#data-structures)
-	- [What even is data structure?](#what-even-is-data-structure)
-	- [Stack](#stack)
-	- [Queue](#queue)
-	- [Matrix](#matrix)
-	- [Linked list](#linked-list)
-	- [Binary tree](#binary-tree)
-	- [Graph](#graph)
+  - [What even is data structure?](#what-even-is-data-structure)
+  - [Stack](#stack)
+  - [Queue](#queue)
+  - [Matrix](#matrix)
+  - [Linked list](#linked-list)
+  - [Binary tree](#binary-tree)
+  - [Graph](#graph)
 
 <!-- /TOC -->
 
@@ -479,16 +479,15 @@ A simple example of a directed graph would be this:
 
 We can see there that this E2 edge is a loop.
 
-If we wanted to go from *V4* to *V1* we would have to take this path:
+If we wanted to go from _V4_ to _V1_ we would have to take this path:
 
-*V4* -> *V3* -> *V1*
+_V4_ -> _V3_ -> _V1_
 
-If we wanted to go from *V1* to *V4* we would have to take this path:
+If we wanted to go from _V1_ to _V4_ we would have to take this path:
 
-*V1* -> *V2* -> *V3* -> *V4*
+_V1_ -> _V2_ -> _V3_ -> _V4_
 
-Notice how this time we weren't able to avoid going through *V2*
-
+Notice how this time we weren't able to avoid going through _V2_
 
 There's also a thing called edge weight. It's just a value describing an edge.
 It's useful when you combine graph with real-life examples. _(Roads aren't always the same size)_
@@ -499,7 +498,7 @@ Maybe even a few of those.
 
 Why?! How?! Where?!
 
-Honestly I don't care enough to respond to all three of those but I'll try to respond to at least one. 
+Honestly I don't care enough to respond to all three of those but I'll try to respond to at least one.
 
 How does it even work in practice?
 
@@ -523,7 +522,7 @@ The Adjacency matrix would look like this:
 [0][0][1][1] //because v4 is connected to v3 and v4 (loop)
 ```
 
-That means that if you have a graph with *m* vertices the adjacency matrix is going to contain *m<sup>2</sup>* bool values.
+That means that if you have a graph with _m_ vertices the adjacency matrix is going to contain _m<sup>2</sup>_ bool values. Every bool value indicates if there's an edge between those i and j indexes in an array.
 
 If this graph was not directed then the adjacency matrix would look like this:
 
@@ -545,12 +544,12 @@ For every single node. We'll create a list of nodes that this node is connected 
 For this graph the adjacency lists would look like this:
 
 ```sh
-1: 2
-2: 3
-3: 1, 4
-4: 3, 4
+1: [2]
+2: [3]
+3: [1][4]
+4: [3][4]
 ```
 
-If we had *m* edges then It'd take *m* memory 
+If we had _m_ edges then It'd take _m_ memory
 
 <!-- {% endraw %} -->

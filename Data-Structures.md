@@ -1,6 +1,7 @@
 <!-- {% raw %} -->
 
 # Data structures
+
 <!-- TOC -->
 
 - [Data structures](#data-structures)
@@ -10,21 +11,24 @@
 	- [Matrix](#matrix)
 	- [Linked list](#linked-list)
 	- [Binary tree](#binary-tree)
+	- [Graph](#graph)
 
 <!-- /TOC -->
 
 ## What even is data structure?
+
 ---
 
 Data structure is a way of organizing the data so that it can be used efficiently.
 
 ## Stack
+
 ---
 
 Stack follows the FILO/LIFO order.
 
- - FILO - First in, last out.
- - LIFO - Last in, first out. 
+- FILO - First in, last out.
+- LIFO - Last in, first out.
 
 This is a simple diagram of a stack.
 
@@ -32,6 +36,7 @@ This is a simple diagram of a stack.
 
 You can see, that the first element inserted there will be the last out.
 This is my simple and not secure implementation of a stack in C++:
+
 ```cpp
 template <class T>
 class RlenStack{
@@ -47,7 +52,9 @@ public:
     ~RlenStack(){ delete []arr; } //free memory
 };
 ```
+
 Possible usage:
+
 ```cpp
 RlenStack<int> s(100); //declaration where 100 is the max amount of elements stored
 s.push(4); //adding element
@@ -56,6 +63,7 @@ int x = s.top(); //getting top element
 ```
 
 After some improvements suggested by w1ndex this is my second implementation
+
 ```cpp
 template <class T>
 class RlenStack{
@@ -66,16 +74,16 @@ public:
     RlenStack(){this->arr = new T[2];} //allocate memory
     void push(T element)
     {
-        if(size<max_size-1) 
+        if(size<max_size-1)
         {
-            this->size++; 
+            this->size++;
             arr[size-1] = element;
         }
-        else //reallocation of the main array 
+        else //reallocation of the main array
         {
-            max_size *=2; 
+            max_size *=2;
             T *new_arr = new T[max_size];
-            for(int i = 0; i < size; i++) 
+            for(int i = 0; i < size; i++)
                 new_arr[i] = arr[i];
             delete []arr;
             arr = new_arr;
@@ -88,7 +96,9 @@ public:
     ~RlenStack(){ delete []arr; } //free memory
 };
 ```
+
 and the usage might be:
+
 ```cpp
 int main()
 {
@@ -107,6 +117,7 @@ This is a simple diagram of a queue.
 ![Diagram](Assets/Data2.png)
 
 So um, I'm just gonna implement that in c++.
+
 ```cpp
 template <class T>
 class RlenQueue{
@@ -115,7 +126,7 @@ class RlenQueue{
     int max_size = 0;
     T *arr = NULL;
 public:
-    RlenQueue(int max_size){ this->arr = new T[max_size]; this->max_size = max_size;} 
+    RlenQueue(int max_size){ this->arr = new T[max_size]; this->max_size = max_size;}
     void push(T element){arr[front_i] = element; if(front_i < max_size-1)front_i++; else front_i = 0;}
     void pop(){if(back_i<max_size-1)back_i++;else back_i = 0;}
     T front(){return arr[back_i];}
@@ -123,7 +134,9 @@ public:
     ~RlenQueue(){ delete []arr; }
 };
 ```
+
 This driver code:
+
 ```cpp
 int main()
 {
@@ -136,11 +149,14 @@ int main()
 	q.push(2);
 }
 ```
+
 would output:
+
 ```sh
 1
 2
 ```
+
 So it works :D
 
 ## Matrix
@@ -153,12 +169,15 @@ Those are some examples of matrix.
 Multiplying each element:
 
 Let's consider this matrix `int t[3][4]`:
+
 ```
 [1][1][2][3]
 [6][5][4][3]
 [7][8][9][9]
 ```
+
 If we wanted to multiply all the elements by `6` we would have to do this:
+
 ```cpp
 for(int i = 0; i < 3; i ++) //there are three rows
     for(int j = 0; j < 4; j++) //4 elements each
@@ -168,6 +187,7 @@ for(int i = 0; i < 3; i ++) //there are three rows
 Adding two matrices:
 
 Let's consider this two matrices `int t[3][4]` and `int w[3][4]`:
+
 ```
 [1][1][2][3]
 [6][5][4][3]
@@ -177,9 +197,11 @@ Let's consider this two matrices `int t[3][4]` and `int w[3][4]`:
 [1][1][2][3]
 [6][5][4][3]
 ```
+
 What if we wanted to add `w` to `t` and store the sum in `int c[3][4]`.
 
 It would look like this:
+
 ```cpp
 for(int i = 0; i < 3; i ++) //there are three rows
     for(int j = 0; j < 4; j++) //4 elements each
@@ -188,24 +210,29 @@ for(int i = 0; i < 3; i ++) //there are three rows
 
 Rotating:
 
-You spin me right round! round round! Like a rocket baby right round! round round! 
+You spin me right round! round round! Like a rocket baby right round! round round!
 
 We want to make this `matrix[3][4]`:
+
 ```
 [7][8][9][9]
 [1][1][2][3]
 [6][5][4][3]
 ```
+
 Look like this:
+
 ```
 [9][3][3]
 [9][2][4]
 [8][1][5]
 [7][1][6]
 ```
+
 The algorithm for that is easy.
 
 This is my simple implementation of it
+
 ```cpp
 int matrix[3][4] = {{7,8,9,9},{1,1,2,3},{6,5,4,3}}; //previous matrix
 
@@ -214,7 +241,7 @@ int new_matrix[4][3]; //rotated matrix
 for(int j = 3; j >= 0; j--) //go through all the columns from right to left
     for(int i = 0; i < 3; i++) //from top to bottom
     {
-        new_matrix[3-j][i] = matrix[i][j]; 
+        new_matrix[3-j][i] = matrix[i][j];
     }
 
 //printing out the array
@@ -227,13 +254,16 @@ for(int i = 0; i < 4; i++)
 	}
 }
 ```
+
 The output should be:
+
 ```
-9 3 3 
-9 2 4 
-8 1 5 
+9 3 3
+9 2 4
+8 1 5
 7 1 6
 ```
+
 And that's right :).
 
 ## Linked list
@@ -241,7 +271,7 @@ And that's right :).
 ![Diagram](Assets/Data5.png)
 
 Like the name suggests it's a data structure with dynamic memory usage.
-You can easily add and remove items from it. That's because every node has a pointer to the next node (Or to NULL). 
+You can easily add and remove items from it. That's because every node has a pointer to the next node (Or to NULL).
 
 Unlike in traditional arrays here you don't assign any type of indexes.
 If you want to access it's tenth or seventh element you need to manually iterate through seven elements. That's a cost for being smart :(
@@ -256,6 +286,7 @@ public:
 	int data;
 };
 ```
+
 Now we can try to implement some simple functions to add/remove nodes.
 
 ```cpp
@@ -263,7 +294,7 @@ void add_node(rlen_node* head, int data)
 {
 	while(head->next != NULL) //go until found tail (node not connected to anything)
 		head = head->next;
-	head->next = new rlen_node(data);	
+	head->next = new rlen_node(data);
 }
 
 void delete_front(rlen_node* head)
@@ -273,7 +304,7 @@ void delete_front(rlen_node* head)
 
 	if(head->next == NULL)
 		delete head;
-	else 
+	else
 	{
 		delete head->next;
 		head->next = NULL;
@@ -290,7 +321,7 @@ void delete_at_index(rlen_node* head, int index)
 	if(depth == index-1)
 	{
 		if(head->next->next != NULL)
-		{	
+		{
 			rlen_node* x = head->next->next;
 			delete head->next;
 			head->next = x;
@@ -300,7 +331,7 @@ void delete_at_index(rlen_node* head, int index)
 			delete head->next;
 			head->next = NULL;
 		}
-	}	
+	}
 	else
 		std::cerr << "Could not find any node at that index\n";
 }
@@ -319,13 +350,15 @@ void print_list(rlen_node* head)
 	std::cout << head->data << " -> ";
 	while(head->next != NULL) //go until found tail (node not connected to anything)
 	{
-		head = head->next; 
+		head = head->next;
 		std::cout << head->data << " -> ";
-	}	
+	}
 	std::cout << "NULL\n";
 }
 ```
+
 With this driver code:
+
 ```cpp
 int main()
 {
@@ -347,6 +380,7 @@ int main()
 	delete_list(head);
 }
 ```
+
 The output is:
 
 ```sh
@@ -358,7 +392,6 @@ The output is:
 ```
 
 Which is good.
-
 
 ## Binary tree
 
@@ -376,6 +409,7 @@ struct rlen_node
     rlen_node *right;
 };
 ```
+
 It contains only an integer **key** variable and two pointers.
 
 Those two pointers are there to point to newly added leaves (Or to NULL if there's nothing).
@@ -421,5 +455,102 @@ void add_node(int key, rlen_node *leaf)
     }
 }
 ```
+
+## Graph
+
+Graph is essentially a set of vertices and a set of edges.
+
+1. Graph order - how many vertices are there
+1. Graph size - how many edges are there
+
+This is a simple example of a graph:
+
+![Diagram](Assets/Data6.png)
+
+There are 5 vertices and 7 edges.
+
+This is a planar graph because it's made in a way that no edges are overlapping each other.
+
+This graph also is a not directed graph because there aren't any directed edges.
+
+A simple example of a directed graph would be this:
+
+![Diagram](Assets/Data7.png)
+
+We can see there that this E2 edge is a loop.
+
+If we wanted to go from *V4* to *V1* we would have to take this path:
+
+*V4* -> *V3* -> *V1*
+
+If we wanted to go from *V1* to *V4* we would have to take this path:
+
+*V1* -> *V2* -> *V3* -> *V4*
+
+Notice how this time we weren't able to avoid going through *V2*
+
+
+There's also a thing called edge weight. It's just a value describing an edge.
+It's useful when you combine graph with real-life examples. _(Roads aren't always the same size)_
+
+You might be asking yourself a question.
+
+Maybe even a few of those.
+
+Why?! How?! Where?!
+
+Honestly I don't care enough to respond to all three of those but I'll try to respond to at least one. 
+
+How does it even work in practice?
+
+It's not that simple.
+There are multiple ways implement a graph.
+
+We can implement a _*Adjacency matrix*_ to represent edges.
+
+The philosophy behind it is simple.
+
+For this graph:
+
+![Diagram](Assets/Data7.png)
+
+The Adjacency matrix would look like this:
+
+```sh
+[0][1][0][0] //because v1 is connected to v2
+[0][0][1][0] //because v2 is connected to v3
+[1][0][0][1] //because v3 is connected to v1 and v4
+[0][0][1][1] //because v4 is connected to v3 and v4 (loop)
+```
+
+That means that if you have a graph with *m* vertices the adjacency matrix is going to contain *m<sup>2</sup>* bool values.
+
+If this graph was not directed then the adjacency matrix would look like this:
+
+```sh
+[0][1][1][0] //because v1 is connected to v2 and v3
+[1][0][1][0] //because v2 is connected to v1 and v3
+[1][1][0][1] //because v3 is connected to v1 and v2 and v4
+[0][0][1][1] //because v4 is connected to v3 and v4 (loop)
+```
+
+There's also a _probably_ better way of saving those edges.
+
+Now we are going to be creating adjacency lists.
+
+For every single node. We'll create a list of nodes that this node is connected to.
+
+![Diagram](Assets/Data7.png)
+
+For this graph the adjacency lists would look like this:
+
+```sh
+1: 2
+2: 3
+3: 1, 4
+4: 3, 4
+```
+
+If we had *m* edges then It'd take *m* memory 
 
 <!-- {% endraw %} -->

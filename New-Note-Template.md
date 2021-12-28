@@ -11,12 +11,10 @@
 <!-- /TOC -->
 
 ## Title of the first chapter
----
 
 Content here
 
 ## Title of the second chapter
----
 
 Content here
 

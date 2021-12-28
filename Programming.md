@@ -10,6 +10,7 @@
 		- [High-level language](#high-level-language)
 	- [Version control](#version-control)
 		- [Repository](#repository)
+- [Software Creation](#software-creation)
 
 <!-- /TOC -->
 
@@ -21,7 +22,7 @@ The idea for this machine was really simple but also complex. Mr. Alan wanted to
 
 Now it didn't change too much. We still have a lot of manual repetitive jobs and we are constantly trying to make it done automatically by a machine.
 
-Machine is just a lot of electrical pieces. Some can even say it's just a calculator. 
+Machine is just a lot of electrical pieces. Some can even say it's just a calculator.
 You need to make it so that the machine is doing the stuff it needs to do. Because machine isn't self aware or anything you need to program it.
 
 Now we actually do not have to create a whole machine. We can just take a programable one and make it perform some tasks by programming it.
@@ -73,6 +74,7 @@ main:
 	.ident	"GCC: (Debian 8.3.0-6) 8.3.0"
 	.section	.note.GNU-stack,"",@progbits
 ```
+
 <!-- cSpell:enable -->
 
 I can just write this:
@@ -86,8 +88,8 @@ int main() {
 }
 ```
 
-And use a *gcc* compiler to convert it to this assembly code.
-(GCC Does not actually convert your c code to assembly by default. It compiles it to machine code. To do the conversion you can use the *`-S`* flag when compiling,)
+And use a _gcc_ compiler to convert it to this assembly code.
+(GCC Does not actually convert your c code to assembly by default. It compiles it to machine code. To do the conversion you can use the _`-S`_ flag when compiling,)
 
 It looks a lot more readable for me. Especially because I know C.
 
@@ -97,7 +99,7 @@ When you're creating something you're almost constantly changing something.
 This process of tinkering can lead to all sorts of problems and often it can break a whole app.
 With version control software you can easily commit versions of your code and when something breaks you can return to the older version.
 
-Here I'm going to be covering the tool named *`git`* and created by the famous Linus Torvalds and Junio C Hamano. It's used almost everywhere. I am using it while making these notes.
+Here I'm going to be covering the tool named _`git`_ and created by the famous Linus Torvalds and Junio C Hamano. It's used almost everywhere. I am using it while making these notes.
 
 Because I prefer using cli version of git I'm going to be covering it here.
 
@@ -115,10 +117,12 @@ $ sudo apt-get install git
 ```
 
 Now we can create a directory for out project and then enter it:
+
 ```sh
 $ mkdir my_project
 $ cd my_project
 ```
+
 We can then initialize this git repo.
 
 ```sh
@@ -142,7 +146,7 @@ Now you can add some source files to it and then you can commit them.
 
 You can commit all of them by simply doing
 
-```
+```sh
 $ git add .
 $ git commit -m "message about what you've changed"
 ```
@@ -151,15 +155,39 @@ This `add` instruction stages all the changes and this `commit` instruction comm
 
 You can commit only some files:
 
-```
+```sh
 $ git add example.txt
 $ git commit -m "small documentation fix"
 ```
 
 If you want to restore a version few commits back you can do
-```
+
+```sh
 $ git reset --hard HEAD~2
 ```
+
 You can use other numbers instead of this `2` depending how much commits do you want to cancel.
+
+# Software Creation
+
+Software creation mainly consists of these 5 steps.
+
+1. Analysis
+   It's mostly focused on defining what is this software supposed to do.
+   To fix a specific problem you have to analyze it. That's what you should do first.
+
+2. Design
+   Here you basically convert analytical model into a scheme of how your software is supposed to work. You can plan basic functions, objects, and other elements of your software.
+
+3. Implementation
+   When you're done with two previous steps you can finally implement your ideas in code.
+
+4. Verification and validation
+   When you're done with implementation you should check your software for bugs/security vulnerabilities/broken parts. If you find anything like this you should fix it.
+
+5. Maintenance
+   When your software goes to market you should still expect some bugs to be found. That's when you should fix them and make new versions of your software / release fix updates.
+
+
 
 <!-- {% endraw %} -->

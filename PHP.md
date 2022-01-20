@@ -386,7 +386,7 @@ There are different loops.
 Every one of them other than foreach is just like in c++ 
 
 
-```cpp    
+```php    
 //for loop
 for(start_instruction; continuation_condition; step_instruction)
 {

@@ -11,6 +11,7 @@
 		- [Password](#password)
 			- [Hashing](#hashing)
 		- [Tokens](#tokens)
+		- [Biometric](#biometric)
 
 <!-- /TOC -->
 
@@ -155,6 +156,22 @@ When it comes to memory cards there are several cons:
 1. Possibility of loosing it. _Attacker could easily grant access with that_
 2. In some cases worse accessibility.
 3. Having a reader could lead to other vulnerabilities and increase costs.
+
+### Biometric
+
+Using parts of your body to authenticate might sound scary, but it's actually not that bad of a idea. Actually, most modern phones can be unlocked either with your face or with your fingerprint.
+
+To the most commonly used _physical features of a person_ for authentication there are these:
+
+1. Face
+2. Fingerprints
+5. Voice
+3. Hand measures
+4. Eye retina pattern
+
+The most accurate would be eye retina pattern, but it's also one of the most expensive ones.
+
+When you're implementing this type of authentication in your product you have to think about stuff like _false match rate_ and _false no match rate_ It's basically how accurate your system is and how many false-positives/false-negatives there would be.
 
 
 

@@ -7,6 +7,7 @@
 - [Cybersecurity](#cybersecurity)
 	- [Solid base and terminology](#solid-base-and-terminology)
 		- [Terminology](#terminology)
+	- [Pentesting](#pentesting)
 	- [Authentication](#authentication)
 		- [Password](#password)
 			- [Hashing](#hashing)
@@ -84,6 +85,22 @@ There's another way of separating attacks into two categories;
 - **Brute force** - A method of trying all the possibilities until the solution to a problem is found
 
 - **Spoofing** - Impersonating another host
+
+## Pentesting
+
+Average pentester follows these steps when working:
+1. Reconnaissance
+    - Here you mostly try to gain as much information about your target as possible. OSINT skills are really useful in this part of pentesting. It's good to know things like google dorking etc.  
+2. Scanning
+    - Here, you scan your target. You can look for possibly vulnerable configurations etc. Tools like nmap, dirbuster, metasploit, Burp Suite can be really useful.   
+3. Gaining Access
+    - Here you basically put the info you gained to some good use. You try to use those vulnerabilities you've noticed to take the control over target's system.
+4. Privilege Escalation
+    - Often you don't get instantly admin privileges. Because it's desired, we want to try to get those. That can help us take control over this system.
+5. Covering Tracks
+    - Here you clean the mess you've made. You can do stuff like clearing logs, removing files/folders you've created.
+6. Reporting
+    - Considered to be one of the most boring parts. Here you write a report about your actions. _(If you're doing it legally ofc)_
 
 ## Authentication
 

@@ -1,17 +1,17 @@
 <!-- {% raw %} -->
 
-- ## [**Cybersecurity**](Cybersecurity.md)
-	- ## [**Networking**](Networking.md)
-	- ## [**Cryptography**](Cryptography.md)
-- ## [**Programming**](Programming.md)
-	- ## [**C++11**](Cpp11.md)
-	- ## [**Python**](Python.md)
-	- ## [**PHP**](PHP.md)
-- ## [**Computer**](Computer.md)
-	<!-- - ## [**Linux**](Linux.md) -->
-- ## [**Math**](Math.md)
-	- ## [**Algorithms**](Algorithms.md)
-	- ## [**Data Structures**](Data-Structures.md)
+- ## [**Cybersecurity**](Notes/Cybersecurity.md)
+	- ## [**Networking**](Notes/Networking.md)
+	- ## [**Cryptography**](Notes/Cryptography.md)
+- ## [**Programming**](Notes/Programming.md)
+	- ## [**C++11**](Notes/Cpp11.md)
+	- ## [**Python**](Notes/Python.md)
+	- ## [**PHP**](Notes/PHP.md)
+- ## [**Computer**](Notes/Computer.md)
+	- ## [**Linux**](Notes/Linux.md)
+- ## [**Math**](Notes/Math.md)
+	- ## [**Algorithms**](Notes/Algorithms.md)
+	- ## [**Data Structures**](Notes/Data-Structures.md)
 
 
 ### Recommended books

@@ -6,7 +6,7 @@
 
 - [Linux](#linux)
 	- [History and Overview](#history-and-overview)
-	- [Title of the second chapter](#title-of-the-second-chapter)
+	- [Task management](#task-management)
 
 <!-- /TOC -->
 
@@ -17,9 +17,15 @@ A Finnish guy named Linus Torvalds was a bit frustrated about licensing of MINIX
 His coworker thought that Linux suits better and he named a project like this.
 
 
-## Title of the second chapter
+## Task management
 ---
 
-Content here
+I've just learned, that you can background a task and redirect a output stream to null by doing this:
+
+``` sh
+./run_something &> /dev/null
+```
+
+Isn't it cool?
 
 <!-- {% endraw %} -->
